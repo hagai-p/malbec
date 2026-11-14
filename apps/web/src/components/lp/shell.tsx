@@ -62,6 +62,11 @@ async function Verified({ slug, eyebrow, title, lede, children }: PageProps) {
           {viewer.firm && <> ({viewer.firm})</>}. Not for distribution. This is not an offer to sell or a solicitation to
           buy any security; any offer is made only through the fund&apos;s offering documents.
         </p>
+        {viewer.role === "admin" && (
+          <p className="mt-2">
+            <a href="/lp/admin" className="text-wine-800 underline">Admin</a>
+          </p>
+        )}
       </footer>
     </>
   );

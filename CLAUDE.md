@@ -5,12 +5,12 @@ One repo for everything Malbec Ventures runs. First mission: the websites.
 ## Layout
 - `apps/web` — Next.js 16 app (App Router, Tailwind 4, pnpm). Serves both domains:
   - `www.malbec.ventures` → public site, routes in `src/app/(public)`
-  - `www.malbec.online` → invite-only LP site (`src/app/lp`) and admin (`src/app/admin`)
+  - `www.malbec.online` → invite-only LP site (`src/app/lp`) and admin (`src/app/lp/admin`)
   - Host routing lives in `src/proxy.ts`. LP/admin paths must never be served on the public host.
 - `apps/web/src/content` — all site copy and data as typed files (site, portfolio, team, legal, lp/*). Edit copy here.
 - `packages/brand` — brand tokens and logo assets, for reuse by decks and marketing.
 - `supabase/migrations` — database schema and row-level security.
-- `docs` — decisions and open items.
+- `docs` — open items and the go-live runbook.
 
 ## Rules
 - Next.js 16 differs from older versions: read `apps/web/node_modules/next/dist/docs/` before using an API (see `apps/web/AGENTS.md`).
@@ -21,3 +21,9 @@ One repo for everything Malbec Ventures runs. First mission: the websites.
 
 ## Commands (in `apps/web`)
 `pnpm dev` · `pnpm build` · `pnpm lint`
+
+## Access rules (do not weaken)
+- Every LP page renders through `LpPage` (`components/lp/shell.tsx`) or calls `requireLp()` / `requireAdmin()` itself. `getViewer()` reads cookies first so gated pages are never prerendered.
+- `proxy.ts` also requires a session for all `/lp/*` paths except login and link confirmation.
+- Reads use the visitor's session (row-level security applies). The service-role client is used only after an explicit check, for writes and for streaming data-room files.
+- After changing LP pages, run `pnpm build` and confirm no LP-only text appears in `.next/static` or prerendered HTML.
