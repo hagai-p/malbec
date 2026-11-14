@@ -1,0 +1,18 @@
+/* Malbec Ventures brand tokens. Keep in sync with apps/web/src/app/globals.css (@theme). */
+:root {
+  --wine-950: #1a070f;
+  --wine-900: #2a0b17;
+  --wine-800: #4e0e25; /* primary */
+  --wine-700: #651530;
+  --wine-600: #7d2241;
+  --gold: #d1c09f; /* secondary */
+  --gold-deep: #a48a56;
+  --cream: #f7f3ec; /* page background */
+  --paper: #fffdf9;
+  --sand: #ece5d8;
+  --line: #ddd3c3;
+  --ink: #24131a;
+  --muted: #6c5a61;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: Inter, system-ui, sans-serif;
+}
