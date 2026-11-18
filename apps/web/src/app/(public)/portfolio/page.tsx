@@ -16,8 +16,8 @@ export default function Portfolio() {
       <main id="main">
         <PageIntro
           eyebrow="Portfolio"
-          title="Early-stage companies bridging Israel and Latin America."
-          lede="We partner with exceptional founders building real economic ties between the two regions."
+          title={<>Seven companies, <em>one bridge.</em></>}
+          lede="Three flavours of the same idea. Every company here increases high-tech exports for both countries."
         />
         <section className="page pb-24">
           <PortfolioGrid companies={companies} />

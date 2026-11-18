@@ -30,6 +30,7 @@ export function LpFrame({ children }: { children: React.ReactNode }) {
 
 type PageProps = {
   slug: string;
+  number?: string;
   eyebrow: string;
   title: React.ReactNode;
   lede?: React.ReactNode;
@@ -45,13 +46,16 @@ export function LpPage(props: PageProps) {
   );
 }
 
-async function Verified({ slug, eyebrow, title, lede, children }: PageProps) {
+async function Verified({ slug, number, eyebrow, title, lede, children }: PageProps) {
   const viewer = await requireLp();
   await logActivity(viewer.id, "page_view", slug);
   return (
     <>
       <main id="main" className="mx-auto max-w-5xl px-6 pb-20 pt-12 sm:px-12 sm:pt-16">
-        <p className="eyebrow">{eyebrow}</p>
+        <p className="eyebrow">
+          {number && <span className="mr-2 text-wine-800">{number} ·</span>}
+          {eyebrow}
+        </p>
         <h1 className="display mt-4 max-w-3xl text-4xl text-wine-900 sm:text-5xl">{title}</h1>
         {lede && <p className="lede mt-6 max-w-2xl">{lede}</p>}
         <div className="mt-12 space-y-16">{typeof children === "function" ? children(viewer) : children}</div>
@@ -60,7 +64,8 @@ async function Verified({ slug, eyebrow, title, lede, children }: PageProps) {
         <p>
           Confidential. Prepared for <strong className="font-medium text-ink">{viewer.fullName || viewer.email}</strong>
           {viewer.firm && <> ({viewer.firm})</>}. Not for distribution. This is not an offer to sell or a solicitation to
-          buy any security; any offer is made only through the fund&apos;s offering documents.
+          buy any security; any offer is made only through the fund&apos;s offering documents.{" "}
+          <a href="/lp/important-information" className="text-wine-800 underline">Important information</a>
         </p>
         {viewer.role === "admin" && (
           <p className="mt-2">
@@ -95,4 +100,24 @@ export function Facts({ items, cols = 4 }: { items: readonly { label: string; va
       ))}
     </dl>
   );
+}
+
+/** Dark band of headline numbers. */
+export function StatBand({ items, cols = 3 }: { items: readonly { value: string; label: string; note?: string }[]; cols?: 2 | 3 | 4 }) {
+  const grid = cols === 2 ? "sm:grid-cols-2" : cols === 4 ? "sm:grid-cols-2 xl:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-3";
+  return (
+    <dl className={`grid gap-px overflow-hidden rounded-xl bg-wine-800/60 ${grid}`}>
+      {items.map((s) => (
+        <div key={s.label + s.value} className="bg-wine-900 p-6 text-cream">
+          <dd className={`font-display ${s.value === "To be confirmed" ? "text-xl italic text-cream/50" : "text-4xl text-gold"}`}>{s.value}</dd>
+          <dt className="mt-3 text-sm leading-relaxed text-cream/85">{s.label}</dt>
+          {s.note && <dd className="mt-1 text-xs text-cream/55">{s.note}</dd>}
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+export function Sources({ children }: { children: React.ReactNode }) {
+  return <p className="mt-3 text-xs leading-relaxed text-muted">Sources: {children}</p>;
 }

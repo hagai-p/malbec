@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ExportMixChart, TwoBrands } from "@/components/figures";
 import { Header } from "@/components/header";
 import { PageIntro } from "@/components/page-intro";
-import { sectors } from "@/content/site";
+import { mirror, sectors, story, talent } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Thesis",
   description:
-    "Why Israel and Argentina, and why now: the investment thesis behind Malbec Ventures, the first and only Israel–LATAM cross-border VC.",
+    "Two nations, two crops, two global brands. Why Malbec Ventures, the first and only Israel–LATAM cross-border VC, exports the Israeli venture playbook to Argentina.",
 };
-
-const comparisons = [
-  { label: "Venture capital invested, 2024", israel: "$12B", argentina: "$420M" },
-  { label: "Per capita", israel: "$1,245", argentina: "under $9" },
-  { label: "Unicorns per million residents", israel: "13.76 — first in the world", argentina: "0.28 — first in Latin America" },
-  { label: "Average seed round", israel: "$7M", argentina: "$3M" },
-  { label: "Active venture funds", israel: "500+", argentina: "about 20" },
-];
 
 export default function Thesis() {
   return (
@@ -25,124 +18,125 @@ export default function Thesis() {
       <main id="main">
         <PageIntro
           eyebrow="Thesis"
-          title={
-            <>
-              Israel knows how to build companies. Argentina knows how to build them <em>with less.</em>
-            </>
-          }
-          lede="Put the two together and you get startups that reach global scale on a fraction of the capital. That is the whole idea. Here is why we believe it, and why now."
+          title={<>Two nations. Two crops. <em>Two global brands.</em></>}
+          lede="Can a country export venture capital, the way it once exported fruit or wine? We think so. The story takes an orange, a grape, and a playbook."
         />
 
-        <article className="page grid gap-16 pb-24 lg:grid-cols-[1fr_2fr] lg:gap-20">
-          <aside className="lg:sticky lg:top-28 lg:self-start">
-            <dl className="space-y-6 border-t border-line pt-6 text-sm">
-              <div>
-                <dt className="eyebrow">Model</dt>
-                <dd className="mt-2 font-display text-xl text-wine-900">{sectors.model}</dd>
-              </div>
-              <div>
-                <dt className="eyebrow">Stage</dt>
-                <dd className="mt-2 font-display text-xl text-wine-900">{sectors.stage}</dd>
-              </div>
-              <div>
-                <dt className="eyebrow">Geography</dt>
-                <dd className="mt-2 font-display text-xl text-wine-900">Israel &amp; Argentina</dd>
-              </div>
-            </dl>
-          </aside>
+        <section className="page pb-20">
+          <TwoBrands brands={story.brands} line={story.brandsLine} />
+        </section>
 
-          <div className="min-w-0 space-y-16">
-            <section>
-              <h2 className="display text-3xl text-wine-900">Two worlds, one opportunity</h2>
-              <div className="mt-6 space-y-5 text-lg leading-relaxed text-muted">
-                <p>
-                  Israel is the most concentrated startup ecosystem on earth: more unicorns per person than any other
-                  country, and three and a half decades of practice at taking a company from a garage to an acquisition or
-                  a public listing. Its high-tech sector accounts for roughly a fifth of GDP and more than half of exports.
-                </p>
-                <p>
-                  Argentina leads Latin America on the same measure, with a fraction of the capital. Around 150,000
-                  software developers, the highest English proficiency in the region, and salary costs 50–55% below the
-                  United States. Global acquirers have already noticed: Auth0 was bought by Okta for $6.5B, Technisys by
-                  SoFi for about $1B.
-                </p>
-              </div>
-              <div className="mt-10 overflow-x-auto rounded-xl border border-line bg-paper">
-                <table className="w-full min-w-[32rem] text-left text-sm">
-                  <thead>
-                    <tr className="border-b border-line text-xs uppercase tracking-[0.18em] text-gold-deep">
-                      <th scope="col" className="px-5 py-4 font-medium">&nbsp;</th>
-                      <th scope="col" className="px-5 py-4 font-medium">Israel</th>
-                      <th scope="col" className="px-5 py-4 font-medium">Argentina</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comparisons.map((row) => (
-                      <tr key={row.label} className="border-b border-line/70 last:border-0">
-                        <th scope="row" className="px-5 py-4 font-normal text-muted">{row.label}</th>
-                        <td className="px-5 py-4 font-display text-lg text-wine-900">{row.israel}</td>
-                        <td className="px-5 py-4 font-display text-lg text-wine-900">{row.argentina}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted">
-                Fewer than 1% of Israel&apos;s venture funds invest in Latin America. That is the white space we work in.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="display text-3xl text-wine-900">Why now</h2>
-              <div className="mt-6 space-y-5 text-lg leading-relaxed text-muted">
-                <p>
-                  Argentina is changing faster than at any time in a generation. Monthly inflation has fallen from 25.5%
-                  to around 2.9%, the budget has moved from a 4.6% deficit to its first surplus since 2010, and country
-                  risk has compressed by 77%.
-                </p>
-                <p>
-                  Israel, meanwhile, is rebuilding with valuations that reward early conviction, and a new wave of
-                  technology is giving small teams the reach that once took hundreds of people. Good founders in both
-                  countries are short of capital and of networks. We bring both.
-                </p>
-              </div>
-            </section>
-
-            <section>
-              <h2 className="display text-3xl text-wine-900">Where we invest</h2>
-              <p className="mt-6 text-lg leading-relaxed text-muted">
-                Data-driven B2B products for industries where Israel and Argentina are both strong, and where one
-                country&apos;s technology meets the other&apos;s market.
-              </p>
-              <ul className="mt-8 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
-                {sectors.core.map((s) => (
-                  <li key={s.name} className="bg-paper p-7">
-                    <h3 className="font-display text-xl text-wine-900">{s.name}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{s.note}</p>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 text-sm text-muted">
-                And, when the founder is exceptional: {sectors.opportunistic.join(" and ")}.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="display text-3xl text-wine-900">How it compounds</h2>
-              <div className="mt-6 space-y-5 text-lg leading-relaxed text-muted">
-                <p>
-                  An Israeli company with an engineering team in Buenos Aires extends its runway. An Argentine founder
-                  introduced in Tel Aviv meets decision-makers who sign a pilot before the product is finished. An Israeli
-                  agri-tech finds its first large market on the Pampas. Each of these is already happening in our
-                  portfolio.
-                </p>
-              </div>
-              <Link href="/portfolio" className="btn-wine mt-8">
-                See the companies
-              </Link>
-            </section>
+        {/* The name */}
+        <section className="bg-wine-800 text-cream">
+          <div className="page grid gap-10 py-20 md:grid-cols-[auto_1fr] md:items-center md:gap-20">
+            <div className="text-center md:text-left">
+              <p className="font-display text-7xl text-gold sm:text-8xl">{story.nameYear}</p>
+              <p className="mt-2 text-sm text-cream/70">{story.nameYearLabel}</p>
+            </div>
+            <div>
+              <p className="eyebrow !text-gold">The name · why “Malbec”</p>
+              <h2 className="display mt-4 text-3xl sm:text-5xl">What is in your glass is the evidence.</h2>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/85">{story.name}</p>
+              <p className="mt-4 font-display text-2xl italic text-gold">{story.nameLine}</p>
+            </div>
           </div>
-        </article>
+        </section>
+
+        {/* The mirror */}
+        <section className="page py-20 sm:py-28">
+          <p className="eyebrow">The mirror · Israel then, Argentina now</p>
+          <h2 className="display mt-4 max-w-3xl text-3xl text-wine-900 sm:text-5xl">You have seen this movie before.</h2>
+          <div className="mt-12 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+            <div className="min-w-0">
+              <ExportMixChart bars={mirror.bars} />
+              <p className="mt-3 text-xs text-muted">Sources: {mirror.source}</p>
+            </div>
+            <ul className="space-y-8">
+              {mirror.points.map((p) => (
+                <li key={p.title}>
+                  <h3 className="font-display text-xl text-wine-900">{p.title}</h3>
+                  <p className="mt-2 leading-relaxed text-muted">{p.text}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="mt-12 text-center font-display text-2xl italic text-wine-800 sm:text-3xl">{mirror.line}</p>
+        </section>
+
+        {/* Talent */}
+        <section className="border-y border-line bg-paper">
+          <div className="page py-20 sm:py-24">
+            <p className="eyebrow">The talent · deep, educated, global</p>
+            <h2 className="display mt-4 max-w-3xl text-3xl text-wine-900 sm:text-5xl">Argentine talent, in numbers.</h2>
+            <dl className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              {talent.stats.map((s) => (
+                <div key={s.label} className="border-t border-line pt-6">
+                  <dd className="font-display text-5xl text-wine-800">{s.value}</dd>
+                  <dt className="mt-3 text-sm leading-relaxed text-muted">{s.label}</dt>
+                  <dd className="mt-1 text-xs text-muted/80">{s.source}</dd>
+                </div>
+              ))}
+            </dl>
+            <ul className="mt-14 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+              {talent.engine.map((e) => (
+                <li key={e.title} className="bg-cream p-6">
+                  <h3 className="font-display text-lg text-wine-900">{e.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{e.text}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-10 text-sm uppercase tracking-[0.18em] text-muted">Argentines already build global companies</p>
+            <ul className="mt-3 font-display text-2xl leading-relaxed text-wine-900 flex flex-wrap gap-x-3">
+          {talent.proof.map((n, i) => (
+            <li key={n}>{n}{i < talent.proof.length - 1 && <span aria-hidden className="ml-3 text-gold-deep">·</span>}</li>
+          ))}
+        </ul>
+            <p className="mt-10 font-display text-2xl italic text-wine-800">{talent.line}</p>
+          </div>
+        </section>
+
+        {/* Where we invest */}
+        <section className="page grid gap-12 py-20 sm:py-28 lg:grid-cols-[1fr_2fr] lg:gap-20">
+          <div>
+            <p className="eyebrow">Where we invest</p>
+            <h2 className="display mt-4 text-3xl text-wine-900 sm:text-4xl">Israeli playbook. Argentine execution. Global markets.</h2>
+            <dl className="mt-8 space-y-5 border-t border-line pt-6 text-sm">
+              <div><dt className="eyebrow">Model</dt><dd className="mt-1 font-display text-xl text-wine-900">{sectors.model}</dd></div>
+              <div><dt className="eyebrow">Stage</dt><dd className="mt-1 font-display text-xl text-wine-900">{sectors.stage}</dd></div>
+              <div><dt className="eyebrow">Geography</dt><dd className="mt-1 font-display text-xl text-wine-900">Israel &amp; Argentina</dd></div>
+            </dl>
+          </div>
+          <div>
+            <p className="text-lg leading-relaxed text-muted">
+              B2B software with unique data, for the traditional industries both countries know deeply, and where one
+              country&apos;s technology meets the other&apos;s market.
+            </p>
+            <ul className="mt-8 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
+              {sectors.core.map((s) => (
+                <li key={s.name} className="bg-paper p-7">
+                  <h3 className="font-display text-xl text-wine-900">{s.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{s.note}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 text-sm text-muted">And, when the founder is exceptional: {sectors.opportunistic.join(" and ")}.</p>
+          </div>
+        </section>
+
+        {/* Close */}
+        <section className="bg-wine-950 text-cream">
+          <div className="page py-20 text-center sm:py-28">
+            <h2 className="display mx-auto max-w-3xl text-4xl sm:text-6xl">{story.close}</h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cream/80">
+              Israel turned its lead export from oranges into an $85B high-tech industry. Argentina turned an imported
+              French grape into a global icon. The next chapter is written together.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Link href="/portfolio" className="btn-gold">See the companies</Link>
+              <Link href="/contact" className="btn-light">Get in touch</Link>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );

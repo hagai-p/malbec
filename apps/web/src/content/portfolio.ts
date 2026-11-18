@@ -8,6 +8,7 @@ export type Company = {
   oneLiner: string;
   description: string;
   bridge?: string;
+  group: "il-ar-talent" | "ar-founders" | "il-for-latam";
   url: string;
 };
 
@@ -15,6 +16,7 @@ export type Company = {
 export const companies: Company[] = [
   {
     slug: "replace",
+    group: "il-ar-talent",
     name: "REplace",
     country: "Israel",
     sector: "Energy & Climate",
@@ -28,6 +30,7 @@ export const companies: Company[] = [
   },
   {
     slug: "nandi",
+    group: "il-ar-talent",
     name: "Nandi",
     country: "Israel",
     sector: "Agri-Tech",
@@ -40,6 +43,7 @@ export const companies: Company[] = [
   },
   {
     slug: "dtect-vision",
+    group: "il-for-latam",
     name: "Dtect Vision",
     country: "Israel",
     sector: "Cybersecurity",
@@ -51,6 +55,7 @@ export const companies: Company[] = [
   },
   {
     slug: "motivia",
+    group: "ar-founders",
     name: "Motivia",
     country: "Argentina",
     sector: "Digital Health",
@@ -62,6 +67,7 @@ export const companies: Company[] = [
   },
   {
     slug: "watchit",
+    group: "il-for-latam",
     name: "WATCHIT",
     country: "Israel",
     sector: "AI",
@@ -74,6 +80,7 @@ export const companies: Company[] = [
   },
   {
     slug: "bloomx",
+    group: "il-for-latam",
     name: "BloomX",
     country: "Israel",
     sector: "Agri-Tech",
@@ -87,6 +94,7 @@ export const companies: Company[] = [
   },
   {
     slug: "zula",
+    group: "ar-founders",
     name: "ZULA Cybersecurity",
     country: "Argentina",
     sector: "Cybersecurity",
@@ -117,3 +125,9 @@ export const collaborators = [
   "IBI Capital",
   "Alto",
 ];
+
+export const bridgeGroups = [
+  { key: "il-ar-talent", title: "Israeli startups, powered by Argentine talent" },
+  { key: "ar-founders", title: "Argentine startups, top-tier founders" },
+  { key: "il-for-latam", title: "Israeli deep tech, for Latin American customers" },
+] as const;

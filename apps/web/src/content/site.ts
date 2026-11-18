@@ -42,13 +42,59 @@ export const pillars = [
   },
 ] as const;
 
-/** Public market figures (2024), as used in the investor deck. */
+/** Public market figures, as presented in Malbec's "VC as an Export?" and Embassy decks (Aug 2026). */
 export const bridgeStats = [
-  { value: "$12B", label: "invested in Israeli startups in 2024", side: "Israel" },
-  { value: "13.8", label: "unicorns per million residents, the highest in the world", side: "Israel" },
-  { value: "150K", label: "software developers, with the best English in Latin America", side: "Argentina" },
-  { value: "<1%", label: "of Israel's 500+ venture funds invest in Latin America", side: "The gap" },
+  { value: ">100×", label: "gap in venture investment per person between Israel and Argentina", side: "The gap" },
+  { value: "$85B", label: "of high-tech exports a year, 58% of everything Israel sells abroad", side: "Israel" },
+  { value: "162K", label: "software professionals, with the best English in Latin America", side: "Argentina" },
+  { value: "12", label: "unicorns, the strongest per-capita record in Latin America", side: "Argentina" },
 ] as const;
+
+export const story = {
+  brands: [
+    { name: "Jaffa oranges", line: "Israel's face to the world, once 75% of its exports." },
+    { name: "Malbec grapes", line: "Argentina's face to the world, 60% of its wine exports." },
+  ],
+  brandsLine: "Both born from soil and craft. Both conquered the world. Both are grown by great talent.",
+  nameYear: "1853",
+  nameYearLabel: "the year Malbec arrived from France",
+  name: "A French grape that struggled at home. Argentine soil, altitude and craft made it the world's benchmark.",
+  nameLine: "Argentina takes imported knowledge and makes it world-class.",
+  close: "Malbec exports the Israeli VC playbook.",
+} as const;
+
+/** Share of exports (%), the "mirror" chart. */
+export const mirror = {
+  bars: [
+    { label: "Israel · 1950s", agriculture: 75, tech: 0 },
+    { label: "Israel · 2025", agriculture: 2, tech: 58 },
+    { label: "Argentina · 2025", agriculture: 60, tech: 10, question: true },
+  ],
+  points: [
+    { title: "Israel flipped this chart in one generation", text: "From oranges at 75% of exports to high-tech at 58%, $85B a year, powered by the venture capital industry born with the Yozma programme in 1993." },
+    { title: "Argentina is at the tipping point today", text: "Agriculture still leads at about 60% of exports, but knowledge services hit a record $9.6B in 2025, already the country's third-largest export complex." },
+    { title: "Venture capital fuelled the transition", text: "What flipped Israel's chart was not talent. Both countries have it. It was financing." },
+  ],
+  line: "The catalyst that flips the chart is venture financing.",
+  source: "Israel Innovation Authority, State of High-Tech 2026; Argencon 2025; OECD.",
+} as const;
+
+export const talent = {
+  stats: [
+    { value: "162,598", label: "software-industry professionals, an all-time record", source: "CESSI, Q1 2026" },
+    { value: "285,000", label: "knowledge-economy jobs; 80% hold university degrees", source: "Argencon" },
+    { value: "#1", label: "English proficiency in Latin America, year after year", source: "EF EPI" },
+    { value: "$2.85B", label: "record software exports, 49% sold to the United States", source: "CESSI" },
+  ],
+  engine: [
+    { title: "2M+ students", text: "Over two million university students nationwide. The University of Buenos Aires alone has 105,000+, and ranks in the world's top 100." },
+    { title: "Tuition-free, by law", text: "Public universities have been free since 1949, open to every talented student regardless of means." },
+    { title: "Five Nobel laureates", text: "Four of them studied at UBA, a record unmatched in Latin America." },
+    { title: "Innovation hubs beyond the capital", text: "Córdoba, Mendoza, Rosario and Santa Fe all host meaningful hubs, with INTA and CONICET behind them." },
+  ],
+  proof: ["MercadoLibre", "Globant", "Auth0", "Vercel", "Mural", "Satellogic"],
+  line: "Talent is not the bottleneck. Access to capital is.",
+} as const;
 
 export const sectors = {
   core: [

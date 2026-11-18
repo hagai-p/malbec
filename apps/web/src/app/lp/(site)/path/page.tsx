@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "The path" };
 export default function Path() {
   return (
     <LpPage
-      slug="path"
+      slug="path" number="04"
       eyebrow="The path"
       title={<>Prove it, then scale it: <em>POC → Malbec 1 → Malbec 2.</em></>}
       lede="We are building Malbec the way we ask founders to build companies: show it works with a small amount of capital, then raise more on the evidence."
@@ -26,6 +26,7 @@ export default function Path() {
                 <p className="text-lg text-ink/85">{v.summary}</p>
                 <p className="text-muted"><span className="eyebrow mr-3">What it proves</span>{v.proves}</p>
                 {v.key === "poc" && <p className="text-muted"><span className="eyebrow mr-3">Initial closing</span>$1M</p>}
+                {v.open && <p className="text-muted"><span className="eyebrow mr-3">First cheque</span>{v.key === "poc" ? "Up to $250K" : "Up to $500K, follow-on up to $3M"}</p>}
               </div>
             </li>
           ))}

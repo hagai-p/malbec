@@ -27,7 +27,7 @@ async function UpdateList() {
 
 export default function Updates() {
   return (
-    <LpPage slug="updates" eyebrow="Updates" title="News from the fund." lede="Dated notes from the partners: investments, milestones, closings.">
+    <LpPage slug="updates" number="11" eyebrow="Updates" title="News from the fund." lede="Dated notes from the partners: investments, milestones, closings.">
       <UpdateList />
     </LpPage>
   );

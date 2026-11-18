@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Block, LpPage } from "@/components/lp/shell";
-import { partnerRecords, TBC, trackRecord } from "@/content/lp/fund";
+import { Quote } from "@/components/figures";
+import { Block, LpPage, StatBand } from "@/components/lp/shell";
+import { partnerRecords, quotes, scoreboard } from "@/content/lp/fund";
 import { coInvestors } from "@/content/portfolio";
 
 export const metadata: Metadata = { title: "Track record" };
@@ -9,19 +10,13 @@ export default function TrackRecord() {
   return (
     <LpPage
       slug="track-record"
+      number="06"
       eyebrow="Track record"
       title="What we have done with a small amount of capital."
-      lede="The POC period is the evidence. Here is where it stands."
+      lede="Seven investments since November 2025. The POC is the evidence; here is where it stands."
     >
-      <Block title="To date">
-        <dl className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 xl:grid-cols-4">
-          {trackRecord.map((t) => (
-            <div key={t.label} className="bg-paper p-6">
-              <dd className={`font-display ${t.value === TBC ? "text-2xl italic text-muted" : "text-5xl text-wine-800"}`}>{t.value}</dd>
-              <dt className="mt-3 text-sm text-muted">{t.label}</dt>
-            </div>
-          ))}
-        </dl>
+      <Block title="The scoreboard">
+        <StatBand items={scoreboard} />
         <p className="mt-3 text-xs text-muted">Valuation marks, multiples and realised proceeds: to be added from fund records.</p>
       </Block>
 
@@ -31,6 +26,10 @@ export default function TrackRecord() {
             <span key={n}>{n}{i < coInvestors.length - 1 && <span className="mx-2 text-gold-deep">·</span>}</span>
           ))}
         </p>
+      </Block>
+
+      <Block title="In a founder's words">
+        <Quote {...quotes.founder} />
       </Block>
 
       <Block title="The partners' own records">

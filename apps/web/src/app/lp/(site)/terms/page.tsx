@@ -8,7 +8,7 @@ export default function Terms() {
   const open = vehicles.filter((v) => v.open);
   return (
     <LpPage
-      slug="terms"
+      slug="terms" number="08"
       eyebrow="Terms"
       title="The commercial terms, side by side."
       lede="A summary for discussion. The fund's offering documents govern, and are in the data room when final."
@@ -38,8 +38,6 @@ export default function Terms() {
         <dl className="divide-y divide-line border-y border-line">
           {[
             ["Stage", "Pre-seed to Series A"],
-            ["First cheque", "Up to $500K"],
-            ["Follow-on", "Up to $3M per company"],
             ["Geography", "Around 75% Israel, 25% Argentina"],
             ["Company domicile", "Portfolio companies registered in Delaware or Israel"],
           ].map(([k, v]) => (

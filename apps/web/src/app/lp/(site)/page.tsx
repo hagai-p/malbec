@@ -1,23 +1,20 @@
 import Link from "next/link";
-import { Block, Facts, LpPage } from "@/components/lp/shell";
-import { lpNav, snapshot, vehicles } from "@/content/lp/fund";
-import { site } from "@/content/site";
+import { TwoBrands } from "@/components/figures";
+import { Block, LpPage, StatBand } from "@/components/lp/shell";
+import { execSummary, glance, lpNav, vehicles } from "@/content/lp/fund";
+import { site, story } from "@/content/site";
 
 export default function LpHome() {
   return (
-    <LpPage
-      slug="welcome"
-      eyebrow="Welcome"
-      title={<>Thank you for <em>pulling up a chair.</em></>}
-    >
+    <LpPage slug="welcome" number="01" eyebrow="Welcome" title={<>Thank you for <em>pulling up a chair.</em></>}>
       {(viewer) => (
         <>
           <section className="max-w-2xl space-y-5 text-lg leading-relaxed text-ink/85">
             <p>{viewer.fullName ? `${viewer.fullName.split(" ")[0]},` : "Hello,"}</p>
             <p>
               I built this room for the handful of people I want alongside us. It holds everything I would walk you
-              through in person: why we believe the Israel–Argentina corridor is the most overlooked opportunity in
-              early-stage venture, what we have already done about it, and how you can take part.
+              through in person: a market where the talent is world-class, the entry price is less than half of Tel
+              Aviv&apos;s, and the smartest money has already started moving.
             </p>
             <p>
               Read it in any order. When something raises a question, call me on{" "}
@@ -26,12 +23,36 @@ export default function LpHome() {
             <p className="font-display text-xl italic text-wine-800">Hagai Platin, Founder &amp; Managing Partner</p>
           </section>
 
-          <Block title="Malbec in one screen">
-            <p className="mb-7 max-w-2xl font-display text-xl leading-relaxed text-wine-900">
-              {site.positioning} We back data-driven B2B founders in Israel and Argentina and open the other side of the
-              ocean for each of them.
-            </p>
-            <Facts items={snapshot} />
+          <Block title="Two nations. Two crops. Two global brands.">
+            <TwoBrands brands={story.brands} line={story.brandsLine} />
+            <div className="mt-8 grid gap-6 rounded-xl bg-wine-800 p-7 text-cream sm:grid-cols-[auto_1fr] sm:items-center sm:gap-10 sm:p-9">
+              <div className="text-center">
+                <p className="font-display text-5xl text-gold">{story.nameYear}</p>
+                <p className="mt-1 text-xs text-cream/70">{story.nameYearLabel}</p>
+              </div>
+              <div>
+                <p className="eyebrow !text-gold">Why “Malbec”</p>
+                <p className="mt-3 text-lg leading-relaxed text-cream/90">{story.name}</p>
+                <p className="mt-3 font-display text-xl italic">{story.nameLine}</p>
+              </div>
+            </div>
+          </Block>
+
+          <Block title="Malbec in five points">
+            <ol className="divide-y divide-line border-y border-line">
+              {execSummary.map((p, i) => (
+                <li key={p.lead} className="grid gap-2 py-5 sm:grid-cols-[3rem_1fr]">
+                  <span className="font-display text-xl italic text-gold-deep">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="text-lg leading-relaxed text-ink/85">
+                    <strong className="font-display font-medium text-wine-900">{p.lead}</strong> {p.text}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </Block>
+
+          <Block title="The fund at a glance">
+            <StatBand items={glance} />
           </Block>
 
           <Block title="What is open">

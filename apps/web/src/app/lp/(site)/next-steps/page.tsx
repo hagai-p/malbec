@@ -8,7 +8,9 @@ export const metadata: Metadata = { title: "FAQ & next steps" };
 
 export default function NextSteps() {
   return (
-    <LpPage slug="next-steps" eyebrow="FAQ & next steps" title="Questions, and what happens next.">
+    <LpPage slug="next-steps" number="12" eyebrow="FAQ & next steps" title="Questions, and what happens next."
+      lede="Malbec exports the Israeli VC playbook. The window between recognition and repricing is where venture returns are made."
+    >
       <Block title="Frequently asked">
         <div className="divide-y divide-line border-y border-line">
           {faq.map((f) => (

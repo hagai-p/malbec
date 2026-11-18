@@ -1,70 +1,137 @@
 import type { Metadata } from "next";
-import { Block, LpPage } from "@/components/lp/shell";
-import { comparisons, whyNow } from "@/content/lp/fund";
+import { Chain, ExportMixChart, PriceBars } from "@/components/figures";
+import { Block, LpPage, Sources, StatBand } from "@/components/lp/shell";
+import { acquirers, chain, chainSource, ecosystem, gap, signals, signalsSource } from "@/content/lp/fund";
+import { mirror, talent } from "@/content/site";
 
 export const metadata: Metadata = { title: "Opportunity" };
-
-function Bar({ scale, tone }: { scale: number; tone: "wine" | "gold" }) {
-  return (
-    <span className="block h-2.5 w-full rounded-full bg-sand" aria-hidden>
-      <span className={`block h-full rounded-full ${tone === "wine" ? "bg-wine-800" : "bg-gold-deep"}`} style={{ width: `${Math.max(scale * 100, 1.5)}%` }} />
-    </span>
-  );
-}
 
 export default function Opportunity() {
   return (
     <LpPage
       slug="opportunity"
+      number="02"
       eyebrow="Opportunity"
-      title={<>The world&apos;s densest startup nation, and the one that <em>does it on a fraction of the capital.</em></>}
-      lede="Israel has the playbook and the exits. Argentina has the talent and the valuations. Almost no capital connects them."
+      title={<>You have seen this movie before. <em>Argentina is the same trade, one generation later.</em></>}
+      lede="World-class talent. A developing tech ecosystem. Almost no competing capital. The window between recognition and repricing is where venture returns are made."
     >
-      <Block title="Side by side" note="Israel leads the world; Argentina leads Latin America. The distance between the two columns is the opportunity.">
-        <div className="rounded-xl border border-line bg-paper">
-          <div className="flex gap-6 border-b border-line px-6 py-4 text-xs uppercase tracking-[0.18em]">
-            <span className="flex items-center gap-2 text-wine-800"><span className="h-2.5 w-2.5 rounded-full bg-wine-800" />Israel</span>
-            <span className="flex items-center gap-2 text-gold-deep"><span className="h-2.5 w-2.5 rounded-full bg-gold-deep" />Argentina</span>
-          </div>
-          <dl>
-            {comparisons.map((c) => (
-              <div key={c.metric} className="grid gap-4 border-b border-line/70 px-6 py-5 last:border-0 md:grid-cols-[14rem_1fr] md:items-center">
-                <dt className="text-sm text-muted">{c.metric}</dt>
-                <dd className="space-y-2">
-                  <div className="grid grid-cols-[5.5rem_1fr] items-center gap-4">
-                    <span className="font-display text-xl text-wine-900">{c.israel.text}</span>
-                    <Bar scale={c.israel.scale} tone="wine" />
-                  </div>
-                  <div className="grid grid-cols-[5.5rem_1fr] items-center gap-4">
-                    <span className="font-display text-xl text-gold-deep">{c.argentina.text}</span>
-                    <Bar scale={c.argentina.scale} tone="gold" />
-                  </div>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-        <p className="mt-3 text-xs text-muted">2024 figures, as presented in the Malbec Ventures investor deck. Sources to be listed.</p>
+      <Block title="The argument in five steps">
+        <Chain steps={chain} />
+        <Sources>{chainSource}</Sources>
       </Block>
 
-      <Block title="Why now">
-        <ul className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2">
-          {whyNow.map((w) => (
-            <li key={w.title} className="bg-paper p-7">
-              <h3 className="font-display text-xl text-wine-900">{w.title}</h3>
-              <p className="mt-3 leading-relaxed text-muted">{w.body}</p>
+      <Block title="The mirror: Israel then, Argentina now">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
+          <ExportMixChart bars={mirror.bars} />
+          <ul className="space-y-6">
+            {mirror.points.map((p) => (
+              <li key={p.title}>
+                <h3 className="font-display text-lg text-wine-900">{p.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted">{p.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p className="mt-6 font-display text-xl italic text-wine-800">{mirror.line}</p>
+        <Sources>{mirror.source}</Sources>
+      </Block>
+
+      <Block title="Argentine talent, in numbers" note="“We have lots of talent in Argentina.” Is it real? Let the numbers answer.">
+        <StatBand cols={4} items={talent.stats.map((s) => ({ value: s.value, label: s.label, note: s.source }))} />
+        <h3 className="mt-10 font-display text-xl text-wine-900">The engine behind it: a free, world-class education system</h3>
+        <ul className="mt-5 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
+          {talent.engine.map((e) => (
+            <li key={e.title} className="bg-paper p-6">
+              <p className="font-display text-lg text-wine-900">{e.title}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{e.text}</p>
             </li>
           ))}
         </ul>
+        <h3 className="mt-10 font-display text-xl text-wine-900">The proof abroad: Argentines already build global giants</h3>
+        <ul className="mt-4 font-display text-xl leading-relaxed text-wine-800 flex flex-wrap gap-x-3">
+          {talent.proof.map((n, i) => (
+            <li key={n}>{n}{i < talent.proof.length - 1 && <span aria-hidden className="ml-3 text-gold-deep">·</span>}</li>
+          ))}
+        </ul>
+        <p className="mt-6 rounded-xl bg-wine-900 p-6 font-display text-xl italic text-cream">{talent.line}</p>
       </Block>
 
-      <Block title="The arbitrage, plainly">
-        <ul className="space-y-4 text-lg leading-relaxed text-ink/85">
-          <li><strong className="font-display font-medium text-wine-900">Lower entry valuations.</strong> Each dollar buys a larger stake, and a larger share of the outcome.</li>
-          <li><strong className="font-display font-medium text-wine-900">Lower cost of talent.</strong> Milestones are reached on less capital, with longer runway and less dilution.</li>
-          <li><strong className="font-display font-medium text-wine-900">Faster to market.</strong> Lean teams iterate quickly; Israeli decision-makers sign pilots early.</li>
-          <li><strong className="font-display font-medium text-wine-900">Exit in the developed market.</strong> Build where it is efficient, sell where multiples are highest.</li>
+      <Block title="The ecosystem, and the entry price">
+        <StatBand cols={4} items={ecosystem.stats} />
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div className="rounded-xl border border-line bg-paper p-7">
+            <h3 className="eyebrow">Average seed-stage entry price</h3>
+            <div className="mt-6">
+              <PriceBars
+                items={[
+                  { label: "Argentina", text: "~$3M", scale: 0.25, tone: "wine" },
+                  { label: "Israel", text: "~$8M", scale: 0.66, tone: "gold" },
+                  { label: "United States", text: "$12M+", scale: 1, tone: "muted" },
+                ]}
+              />
+            </div>
+          </div>
+          <div className="rounded-xl border border-line bg-paper p-7">
+            <h3 className="eyebrow">What this means for an investor</h3>
+            <p className="mt-4 leading-relaxed text-ink/85">{ecosystem.takeaway}</p>
+          </div>
+        </div>
+        <Sources>{ecosystem.source}</Sources>
+      </Block>
+
+      <Block title="The signal: smart money is already moving">
+        <ul className="grid gap-4 md:grid-cols-2">
+          {signals.map((s) => (
+            <li key={s.title} className={`rounded-xl p-7 ${s.highlight ? "bg-wine-800 text-cream" : "bg-wine-950 text-cream"}`}>
+              <h3 className="font-display text-xl">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-cream/80">{s.body}</p>
+            </li>
+          ))}
         </ul>
+        <Sources>{signalsSource}</Sources>
+      </Block>
+
+      <Block title="Two tech ecosystems, one gap">
+        <div className="grid gap-4 md:grid-cols-2">
+          {([["Israel — a mature VC market", gap.israel, true], ["Argentina — a developing VC market", gap.argentina, false]] as const).map(([title, rows, dark]) => (
+            <section key={title} className={`rounded-xl p-7 ${dark ? "bg-wine-950 text-cream" : "border border-line bg-paper"}`}>
+              <h3 className={`eyebrow ${dark ? "!text-gold" : ""}`}>{title}</h3>
+              <dl className="mt-6 space-y-5">
+                {rows.map((r) => (
+                  <div key={r.label} className="grid grid-cols-[7.5rem_1fr] items-baseline gap-4">
+                    <dd className={`font-display text-3xl ${dark ? "text-cream" : "text-wine-900"}`}>{r.value}</dd>
+                    <dt className={`text-sm leading-relaxed ${dark ? "text-cream/75" : "text-muted"}`}>{r.label}</dt>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          ))}
+        </div>
+        <div className="mt-4 rounded-xl bg-wine-800 p-7 text-cream">
+          <p className="font-display text-2xl">{gap.line}</p>
+          <p className="mt-2 leading-relaxed text-cream/85">{gap.body}</p>
+        </div>
+        <Sources>{gap.source}</Sources>
+      </Block>
+
+      <Block title="Who buys">
+        <div className="overflow-x-auto rounded-xl border border-line bg-paper">
+          <table className="w-full min-w-[34rem] text-left text-sm">
+            <thead className="border-b border-line text-xs uppercase tracking-[0.15em] text-gold-deep">
+              <tr>{["Company", "Outcome", "Value", ""].map((h) => <th key={h} scope="col" className="px-5 py-3 font-medium">{h}</th>)}</tr>
+            </thead>
+            <tbody>
+              {acquirers.map((a) => (
+                <tr key={a.company} className="border-b border-line/70 last:border-0">
+                  <th scope="row" className="px-5 py-4 font-display text-lg font-normal text-wine-900">{a.company}</th>
+                  <td className="px-5 py-4">{a.buyer}</td>
+                  <td className="px-5 py-4 font-display text-lg text-wine-800">{a.value}</td>
+                  <td className="px-5 py-4 text-muted">{a.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </Block>
     </LpPage>
   );

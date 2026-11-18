@@ -37,7 +37,7 @@ async function DocumentList() {
 export default function DataRoom() {
   return (
     <LpPage
-      slug="data-room"
+      slug="data-room" number="10"
       eyebrow="Data room"
       title="The documents."
       lede="Documents open here in your browser and are for viewing only. Each one you open is recorded against your name."

@@ -104,7 +104,7 @@ export default function Home() {
           <div className="page py-20 sm:py-28">
             <p className="eyebrow !text-gold">The bridge</p>
             <h2 className="display mt-4 max-w-3xl text-3xl sm:text-5xl">
-              Two ecosystems that belong together, <em className="text-gold">and almost nobody connecting them.</em>
+              World-class talent on both sides, <em className="text-gold">and a hundredfold gap in financing.</em>
             </h2>
             <dl className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
               {bridgeStats.map((s) => (
