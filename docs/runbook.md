@@ -1,5 +1,23 @@
 # Runbook — taking the sites live
 
+## What is live (public site)
+
+- Code: GitHub `hagai-p/malbec`, branch `main`. Every push to `main` deploys automatically.
+- Hosting: Vercel project `malbec-web` in the team "hagai-5042's projects", root directory `apps/web`, no environment variables.
+- Domains attached in Vercel: `www.malbec.ventures` and `malbec.ventures` (redirects to www).
+- DNS is at GoDaddy. Records for the website:
+
+  | Record | Name | Vercel value | Previous (Base44) value |
+  |---|---|---|---|
+  | A | `@` | `216.150.1.1` | `216.24.57.1` |
+  | CNAME | `www` | `f236ed7147b57885.vercel-dns-016.com` | `base44.onrender.com` |
+
+  To roll back to the Base44 site, restore the previous values. Never touch the MX record (`smtp.google.com`) or TXT records: they carry the `@malbec.ventures` email.
+- The `.vercel.app` addresses ask for a Vercel login (Vercel's default protection); the custom domain is public.
+- LP pages (`/lp/*`) and the founder DD questionnaire (`/dd/*`) return 404 on these addresses by design.
+
+The sections below describe what is still needed for the LP site on `www.malbec.online`.
+
 ## 1. Database (Supabase)
 1. Create a project (suggested name `malbec`, region eu-central-1).
 2. Apply `supabase/migrations/20261114000000_initial_schema.sql`.
