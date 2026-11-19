@@ -12,8 +12,8 @@ export default async function AdminDd({ params }: { params: Promise<{ id: string
   const answers = dd.dd_submissions?.answers ?? {};
   return (
     <article className="max-w-3xl">
-      <Link href="/lp/admin/inbox" prefetch={false} className="text-sm text-muted hover:text-wine-800 print:hidden">← Inbox</Link>
-      <h1 className="display mt-4 text-4xl text-wine-900">{dd.company_name || answers.company_name}</h1>
+      <Link href="/lp/admin/inbox" prefetch={false} className="text-sm text-muted hover:text-accent print:hidden">← Inbox</Link>
+      <h1 className="display mt-4 text-4xl text-heading">{dd.company_name || answers.company_name}</h1>
       <p className="mt-2 text-muted">
         DD questionnaire · {dd.founder_name}, {dd.founder_email} · {dd.dd_submissions?.status === "completed" ? `submitted ${fmt(dd.dd_submissions.completed_at)}` : "draft in progress"}
       </p>
@@ -24,7 +24,7 @@ export default async function AdminDd({ params }: { params: Promise<{ id: string
           <dl className="mt-4 divide-y divide-line border-y border-line">
             {step.fields.map((f) => (
               <div key={f.key} className="py-5">
-                <dt className="font-display text-lg text-wine-900">{f.label}</dt>
+                <dt className="font-display text-lg text-heading">{f.label}</dt>
                 <dd className="mt-2 whitespace-pre-line leading-relaxed text-ink/85">{answers[f.key] || <span className="italic text-muted">No answer</span>}</dd>
               </div>
             ))}

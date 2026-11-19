@@ -10,7 +10,7 @@ async function LinkError({ searchParams }: { searchParams: Promise<{ error?: str
   const { error } = await searchParams;
   if (error !== "link") return null;
   return (
-    <p role="alert" className="mb-6 rounded-md border border-wine-600/40 bg-paper px-4 py-3 text-sm text-wine-700">
+    <p role="alert" className="mb-6 rounded-md border border-danger/40 bg-paper px-4 py-3 text-sm text-accent">
       That link has expired or was already used. Enter your email for a new one.
     </p>
   );
@@ -31,7 +31,7 @@ export default function Login({ searchParams }: { searchParams: Promise<{ error?
       </div>
       <div className="flex items-center p-8 sm:p-14">
         <div className="w-full max-w-md">
-          <h2 className="display text-3xl text-wine-900">Sign in</h2>
+          <h2 className="display text-3xl text-heading">Sign in</h2>
           <p className="mt-3 leading-relaxed text-muted">
             Access is by invitation. Enter the email address your invitation was sent to and we&apos;ll email you a
             one-time sign-in link. No password needed.
@@ -44,8 +44,8 @@ export default function Login({ searchParams }: { searchParams: Promise<{ error?
           </div>
           <p className="mt-10 border-t border-line pt-6 text-sm leading-relaxed text-muted">
             Not invited yet? Write to{" "}
-            <a href={`mailto:${site.email}`} className="text-wine-800 underline">{site.email}</a>, or visit{" "}
-            <a href={site.publicUrl} className="text-wine-800 underline">malbec.ventures</a>.
+            <a href={`mailto:${site.email}`} className="text-accent underline">{site.email}</a>, or visit{" "}
+            <a href={site.publicUrl} className="text-accent underline">malbec.ventures</a>.
           </p>
         </div>
       </div>

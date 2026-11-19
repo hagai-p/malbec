@@ -13,7 +13,7 @@ export default function ImportantInformation() {
       <div className="max-w-3xl space-y-10">
         {importantInformation.map((s) => (
           <section key={s.heading}>
-            <h2 className="font-display text-2xl text-wine-900">{s.heading}</h2>
+            <h2 className="font-display text-2xl text-heading">{s.heading}</h2>
             {s.body.map((p) => <p key={p} className="mt-3 leading-relaxed text-muted">{p}</p>)}
           </section>
         ))}

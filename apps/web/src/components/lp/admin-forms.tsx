@@ -9,7 +9,7 @@ const initial: FormState = { status: "idle" };
 function Status({ state }: { state: FormState }) {
   if (!state.message) return null;
   return (
-    <p role={state.status === "ok" ? "status" : "alert"} className={`text-sm ${state.status === "ok" ? "text-ink" : "text-wine-600"}`}>
+    <p role={state.status === "ok" ? "status" : "alert"} className={`text-sm ${state.status === "ok" ? "text-ink" : "text-danger"}`}>
       {state.message}
     </p>
   );
@@ -20,7 +20,7 @@ function Input({ name, label, state, type = "text", required }: { name: string; 
     <div>
       <label htmlFor={name} className="label">{label}</label>
       <input id={name} name={name} type={type} required={required} className="field !py-2.5" />
-      {state.errors?.[name] && <p className="mt-1.5 text-sm text-wine-600">{state.errors[name]}</p>}
+      {state.errors?.[name] && <p className="mt-1.5 text-sm text-danger">{state.errors[name]}</p>}
     </div>
   );
 }
@@ -60,9 +60,9 @@ export function UploadForm() {
       <div>
         <label htmlFor="file" className="label">File (PDF or image)</label>
         <input id="file" name="file" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp" className="block text-sm" />
-        {state.errors?.file && <p className="mt-1.5 text-sm text-wine-600">{state.errors.file}</p>}
+        {state.errors?.file && <p className="mt-1.5 text-sm text-danger">{state.errors.file}</p>}
       </div>
-      <label className="flex items-center gap-3 text-sm"><input type="checkbox" name="published" className="accent-wine-800" /> Visible to LPs straight away</label>
+      <label className="flex items-center gap-3 text-sm"><input type="checkbox" name="published" className="accent-accent" /> Visible to LPs straight away</label>
       <Status state={state} />
       <button type="submit" disabled={pending} className="btn-wine disabled:opacity-60">{pending ? "Uploading…" : "Add document"}</button>
     </form>

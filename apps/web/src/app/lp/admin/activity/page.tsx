@@ -8,7 +8,7 @@ export default async function AdminActivity() {
   const items = await listActivity();
   return (
     <section>
-      <h1 className="display text-4xl text-wine-900">Activity</h1>
+      <h1 className="display text-4xl text-heading">Activity</h1>
       <p className="mt-2 text-muted">The latest 300 events: who looked at what, and when.</p>
       <div className="mt-8 overflow-x-auto rounded-xl border border-line bg-paper">
         <table className="w-full min-w-[40rem] text-left text-sm">

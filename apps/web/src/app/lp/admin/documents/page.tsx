@@ -9,7 +9,7 @@ export default async function AdminDocuments() {
   return (
     <div className="space-y-14">
       <section>
-        <h1 className="display text-4xl text-wine-900">Documents</h1>
+        <h1 className="display text-4xl text-heading">Documents</h1>
         <p className="mt-2 text-muted">The data room. LPs can view published documents in the browser; they cannot download them.</p>
         <ul className="mt-8 divide-y divide-line rounded-xl border border-line bg-paper">
           {docs.map((d) => (
@@ -22,7 +22,7 @@ export default async function AdminDocuments() {
                 <input type="hidden" name="id" value={d.id} />
                 <input type="hidden" name="published" value={String(!d.published)} />
                 <span className={`rounded-full px-2.5 py-1 text-xs ${d.published ? "bg-wine-800 text-cream" : "bg-sand text-muted"}`}>{d.published ? "Visible" : "Hidden"}</span>
-                <button className="text-sm text-wine-800 underline">{d.published ? "Hide" : "Publish"}</button>
+                <button className="text-sm text-accent underline">{d.published ? "Hide" : "Publish"}</button>
               </form>
             </li>
           ))}
@@ -31,11 +31,11 @@ export default async function AdminDocuments() {
       </section>
       <div className="grid gap-12 lg:grid-cols-2">
         <section>
-          <h2 className="display mb-6 text-2xl text-wine-900">Add a document</h2>
+          <h2 className="display mb-6 text-2xl text-heading">Add a document</h2>
           <UploadForm />
         </section>
         <section>
-          <h2 className="display mb-6 text-2xl text-wine-900">Post an update</h2>
+          <h2 className="display mb-6 text-2xl text-heading">Post an update</h2>
           <UpdateForm />
         </section>
       </div>

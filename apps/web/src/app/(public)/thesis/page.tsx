@@ -45,7 +45,7 @@ export default function Thesis() {
         {/* The mirror */}
         <section className="page py-20 sm:py-28">
           <p className="eyebrow">The mirror · Israel then, Argentina now</p>
-          <h2 className="display mt-4 max-w-3xl text-3xl text-wine-900 sm:text-5xl">You have seen this movie before.</h2>
+          <h2 className="display mt-4 max-w-3xl text-3xl text-heading sm:text-5xl">You have seen this movie before.</h2>
           <div className="mt-12 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
             <div className="min-w-0">
               <ExportMixChart bars={mirror.bars} />
@@ -54,24 +54,24 @@ export default function Thesis() {
             <ul className="space-y-8">
               {mirror.points.map((p) => (
                 <li key={p.title}>
-                  <h3 className="font-display text-xl text-wine-900">{p.title}</h3>
+                  <h3 className="font-display text-xl text-heading">{p.title}</h3>
                   <p className="mt-2 leading-relaxed text-muted">{p.text}</p>
                 </li>
               ))}
             </ul>
           </div>
-          <p className="mt-12 text-center font-display text-2xl italic text-wine-800 sm:text-3xl">{mirror.line}</p>
+          <p className="mt-12 text-center font-display text-2xl italic text-accent sm:text-3xl">{mirror.line}</p>
         </section>
 
         {/* Talent */}
         <section className="border-y border-line bg-paper">
           <div className="page py-20 sm:py-24">
             <p className="eyebrow">The talent · deep, educated, global</p>
-            <h2 className="display mt-4 max-w-3xl text-3xl text-wine-900 sm:text-5xl">Argentine talent, in numbers.</h2>
+            <h2 className="display mt-4 max-w-3xl text-3xl text-heading sm:text-5xl">Argentine talent, in numbers.</h2>
             <dl className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
               {talent.stats.map((s) => (
                 <div key={s.label} className="border-t border-line pt-6">
-                  <dd className="font-display text-5xl text-wine-800">{s.value}</dd>
+                  <dd className="font-display text-5xl text-accent">{s.value}</dd>
                   <dt className="mt-3 text-sm leading-relaxed text-muted">{s.label}</dt>
                   <dd className="mt-1 text-xs text-muted/80">{s.source}</dd>
                 </div>
@@ -79,19 +79,19 @@ export default function Thesis() {
             </dl>
             <ul className="mt-14 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
               {talent.engine.map((e) => (
-                <li key={e.title} className="bg-cream p-6">
-                  <h3 className="font-display text-lg text-wine-900">{e.title}</h3>
+                <li key={e.title} className="bg-page p-6">
+                  <h3 className="font-display text-lg text-heading">{e.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{e.text}</p>
                 </li>
               ))}
             </ul>
             <p className="mt-10 text-sm uppercase tracking-[0.18em] text-muted">Argentines already build global companies</p>
-            <ul className="mt-3 font-display text-2xl leading-relaxed text-wine-900 flex flex-wrap gap-x-3">
+            <ul className="mt-3 font-display text-2xl leading-relaxed text-heading flex flex-wrap gap-x-3">
           {talent.proof.map((n, i) => (
             <li key={n}>{n}{i < talent.proof.length - 1 && <span aria-hidden className="ml-3 text-gold-deep">·</span>}</li>
           ))}
         </ul>
-            <p className="mt-10 font-display text-2xl italic text-wine-800">{talent.line}</p>
+            <p className="mt-10 font-display text-2xl italic text-accent">{talent.line}</p>
           </div>
         </section>
 
@@ -99,11 +99,11 @@ export default function Thesis() {
         <section className="page grid gap-12 py-20 sm:py-28 lg:grid-cols-[1fr_2fr] lg:gap-20">
           <div>
             <p className="eyebrow">Where we invest</p>
-            <h2 className="display mt-4 text-3xl text-wine-900 sm:text-4xl">Israeli playbook. Argentine execution. Global markets.</h2>
+            <h2 className="display mt-4 text-3xl text-heading sm:text-4xl">Israeli playbook. Argentine execution. Global markets.</h2>
             <dl className="mt-8 space-y-5 border-t border-line pt-6 text-sm">
-              <div><dt className="eyebrow">Model</dt><dd className="mt-1 font-display text-xl text-wine-900">{sectors.model}</dd></div>
-              <div><dt className="eyebrow">Stage</dt><dd className="mt-1 font-display text-xl text-wine-900">{sectors.stage}</dd></div>
-              <div><dt className="eyebrow">Geography</dt><dd className="mt-1 font-display text-xl text-wine-900">Israel &amp; Argentina</dd></div>
+              <div><dt className="eyebrow">Model</dt><dd className="mt-1 font-display text-xl text-heading">{sectors.model}</dd></div>
+              <div><dt className="eyebrow">Stage</dt><dd className="mt-1 font-display text-xl text-heading">{sectors.stage}</dd></div>
+              <div><dt className="eyebrow">Geography</dt><dd className="mt-1 font-display text-xl text-heading">Israel &amp; Argentina</dd></div>
             </dl>
           </div>
           <div>
@@ -114,7 +114,7 @@ export default function Thesis() {
             <ul className="mt-8 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
               {sectors.core.map((s) => (
                 <li key={s.name} className="bg-paper p-7">
-                  <h3 className="font-display text-xl text-wine-900">{s.name}</h3>
+                  <h3 className="font-display text-xl text-heading">{s.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{s.note}</p>
                 </li>
               ))}

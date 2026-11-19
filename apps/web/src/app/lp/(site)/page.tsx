@@ -18,9 +18,9 @@ export default function LpHome() {
             </p>
             <p>
               Read it in any order. When something raises a question, call me on{" "}
-              <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} className="text-wine-800 underline">{site.phone}</a>.
+              <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} className="text-accent underline">{site.phone}</a>.
             </p>
-            <p className="font-display text-xl italic text-wine-800">Hagai Platin, Founder &amp; Managing Partner</p>
+            <p className="font-display text-xl italic text-accent">Hagai Platin, Founder &amp; Managing Partner</p>
           </section>
 
           <Block title="Two nations. Two crops. Two global brands.">
@@ -44,7 +44,7 @@ export default function LpHome() {
                 <li key={p.lead} className="grid gap-2 py-5 sm:grid-cols-[3rem_1fr]">
                   <span className="font-display text-xl italic text-gold-deep">{String(i + 1).padStart(2, "0")}</span>
                   <p className="text-lg leading-relaxed text-ink/85">
-                    <strong className="font-display font-medium text-wine-900">{p.lead}</strong> {p.text}
+                    <strong className="font-display font-medium text-heading">{p.lead}</strong> {p.text}
                   </p>
                 </li>
               ))}
@@ -58,10 +58,10 @@ export default function LpHome() {
           <Block title="What is open">
             <ul className="grid gap-5 md:grid-cols-3">
               {vehicles.map((v) => (
-                <li key={v.key} className={`rounded-xl border p-6 ${v.open ? "border-wine-800/30 bg-paper" : "border-dashed border-line"}`}>
+                <li key={v.key} className={`rounded-xl border p-6 ${v.open ? "border-accent/30 bg-paper" : "border-dashed border-line"}`}>
                   <p className={`eyebrow ${v.open ? "" : "!text-muted"}`}>{v.status}</p>
-                  <p className="mt-3 font-display text-2xl text-wine-900">{v.name}</p>
-                  <p className="font-display text-4xl text-wine-800">{v.size}</p>
+                  <p className="mt-3 font-display text-2xl text-heading">{v.name}</p>
+                  <p className="font-display text-4xl text-accent">{v.size}</p>
                   <p className="mt-3 text-sm leading-relaxed text-muted">{v.summary}</p>
                 </li>
               ))}
@@ -76,7 +76,7 @@ export default function LpHome() {
             <ol className="grid gap-x-10 sm:grid-cols-2">
               {lpNav.slice(1).map((n, i) => (
                 <li key={n.href} className="border-t border-line">
-                  <Link href={n.href} prefetch={false} className="flex items-baseline gap-4 py-4 hover:text-wine-800">
+                  <Link href={n.href} prefetch={false} className="flex items-baseline gap-4 py-4 hover:text-accent">
                     <span className="font-display text-sm italic text-gold-deep">{String(i + 2).padStart(2, "0")}</span>
                     <span className="font-display text-lg">{n.label}</span>
                   </Link>

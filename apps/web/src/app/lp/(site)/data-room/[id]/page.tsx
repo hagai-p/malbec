@@ -16,8 +16,8 @@ async function Viewer({ params }: { params: Promise<{ id: string }> }) {
   const isPdf = doc.storage_path.toLowerCase().endsWith(".pdf");
   return (
     <main id="main" className="px-4 pb-16 pt-8 sm:px-10">
-      <Link href="/lp/data-room" prefetch={false} className="text-sm text-muted hover:text-wine-800">← Data room</Link>
-      <h1 className="display mt-4 text-3xl text-wine-900">{doc.title}</h1>
+      <Link href="/lp/data-room" prefetch={false} className="text-sm text-muted hover:text-accent">← Data room</Link>
+      <h1 className="display mt-4 text-3xl text-heading">{doc.title}</h1>
       <p className="mt-2 text-xs text-muted">Confidential. Viewing recorded for {viewer.fullName || viewer.email}.</p>
       <DocumentViewer src={`/lp/data-room/${doc.id}/file`} isPdf={isPdf} watermark={`${viewer.fullName || viewer.email} · Confidential`} />
     </main>

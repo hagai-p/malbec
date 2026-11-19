@@ -20,7 +20,7 @@ export default function Strategy() {
           <ul className="space-y-7">
             {vehiclePillars.map((p) => (
               <li key={p.title} className="border-l-2 border-gold-deep pl-5">
-                <h3 className="font-display text-xl text-wine-900">{p.title}</h3>
+                <h3 className="font-display text-xl text-heading">{p.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{p.text}</p>
               </li>
             ))}
@@ -57,7 +57,7 @@ export default function Strategy() {
         <ul className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
           {sectors.core.map((s) => (
             <li key={s.name} className="bg-paper p-6">
-              <h3 className="font-display text-xl text-wine-900">{s.name}</h3>
+              <h3 className="font-display text-xl text-heading">{s.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{s.note}</p>
             </li>
           ))}

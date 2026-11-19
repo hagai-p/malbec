@@ -15,11 +15,11 @@ export default function Path() {
       <Block title="Three stages">
         <ol className="space-y-5">
           {vehicles.map((v, i) => (
-            <li key={v.key} className={`grid gap-6 rounded-xl border p-7 md:grid-cols-[12rem_1fr] ${v.open ? "border-wine-800/30 bg-paper" : "border-dashed border-line"}`}>
+            <li key={v.key} className={`grid gap-6 rounded-xl border p-7 md:grid-cols-[12rem_1fr] ${v.open ? "border-accent/30 bg-paper" : "border-dashed border-line"}`}>
               <div>
                 <p className="font-display text-sm italic text-gold-deep">Stage {i + 1}</p>
-                <p className="mt-1 font-display text-2xl text-wine-900">{v.name}</p>
-                <p className="font-display text-5xl text-wine-800">{v.size}</p>
+                <p className="mt-1 font-display text-2xl text-heading">{v.name}</p>
+                <p className="font-display text-5xl text-accent">{v.size}</p>
                 <p className={`mt-3 inline-block rounded-full px-3 py-1 text-xs uppercase tracking-[0.15em] ${v.open ? "bg-wine-800 text-cream" : "bg-sand text-muted"}`}>{v.status}</p>
               </div>
               <div className="space-y-4 leading-relaxed">

@@ -30,7 +30,7 @@ export default function LpPortfolio() {
               {items.map((c) => (
                 <li key={c.name} className="rounded-xl border border-line bg-paper p-6 sm:p-7">
                   <div className="flex flex-wrap items-baseline justify-between gap-3">
-                    <h3 className="font-display text-2xl text-wine-900">{c.name}</h3>
+                    <h3 className="font-display text-2xl text-heading">{c.name}</h3>
                     <span className="rounded-full bg-sand px-3 py-1 text-xs text-muted">{c.country} · {c.sector}</span>
                   </div>
                   <p className="mt-3 leading-relaxed text-ink/85">{c.note}</p>
@@ -49,7 +49,7 @@ export default function LpPortfolio() {
       <Block title="Pipeline" note="Companies we are in active conversation with, across agritech, cyber and digital health. Named in confidence; inclusion does not mean an investment will be made.">
         <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-3">
           {pipeline.map((p) => (
-            <li key={p} className="bg-paper px-5 py-4 font-display text-lg text-wine-900">{p}</li>
+            <li key={p} className="bg-paper px-5 py-4 font-display text-lg text-heading">{p}</li>
           ))}
         </ul>
       </Block>

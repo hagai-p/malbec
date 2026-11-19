@@ -23,3 +23,7 @@
 - Globant and Technisys rows in "Who buys": confirm wording.
 
 Sources for content: "ARG VC Ecosystem as an Export Story" (ASHRA, 18.8.26) and "The Argentine Tech Opportunity" (Ambassador's residence, Aug 2026), both in Gmail. Structure borrowed from the E44, iAngels and Breeze decks; none of their figures or wording is used.
+
+## Design direction (Nov 2026)
+
+Three directions are built and switchable: A Estate (default), B Gallery (white), C Night harvest (dark). Comparison page: `docs/themes/index.html`. Preview one locally with `NEXT_PUBLIC_THEME=gallery pnpm dev` (or `night`). Awaiting Hagai's choice; then fold the chosen values into `@theme` in `apps/web/src/app/globals.css` and `packages/brand/tokens.css`, and remove `src/lib/theme.ts` and the other two blocks.

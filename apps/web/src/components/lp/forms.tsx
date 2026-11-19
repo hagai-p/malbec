@@ -6,7 +6,7 @@ import { requestLoginLink, submitAttestation, submitInterest } from "@/lib/lp-ac
 
 const initial: FormState = { status: "idle" };
 const Err = ({ id, text }: { id: string; text?: string }) =>
-  text ? <p id={id} className="mt-2 text-sm text-wine-600">{text}</p> : null;
+  text ? <p id={id} className="mt-2 text-sm text-danger">{text}</p> : null;
 
 export function LoginForm() {
   const [state, action, pending] = useActionState(requestLoginLink, initial);
@@ -38,8 +38,8 @@ export function AttestationForm({ statuses }: { statuses: readonly string[] }) {
         <legend className="label">Which of these describes you?</legend>
         <div className="space-y-3">
           {statuses.map((s) => (
-            <label key={s} className="flex cursor-pointer items-start gap-3 rounded-md border border-line bg-paper p-4 has-[:checked]:border-wine-800">
-              <input type="radio" name="investor_status" value={s} className="mt-1 accent-wine-800" />
+            <label key={s} className="flex cursor-pointer items-start gap-3 rounded-md border border-line bg-paper p-4 has-[:checked]:border-accent">
+              <input type="radio" name="investor_status" value={s} className="mt-1 accent-accent" />
               <span>{s}</span>
             </label>
           ))}
@@ -53,17 +53,17 @@ export function AttestationForm({ statuses }: { statuses: readonly string[] }) {
       </div>
       <div className="space-y-4">
         <label className="flex cursor-pointer items-start gap-3">
-          <input type="checkbox" name="confirm_identity" className="mt-1 accent-wine-800" />
+          <input type="checkbox" name="confirm_identity" className="mt-1 accent-accent" />
           <span>This invitation was addressed to me personally, and I will not share my access.</span>
         </label>
         <Err id="identity-error" text={state.errors?.confirm_identity} />
         <label className="flex cursor-pointer items-start gap-3">
-          <input type="checkbox" name="accept_terms" className="mt-1 accent-wine-800" />
+          <input type="checkbox" name="accept_terms" className="mt-1 accent-accent" />
           <span>I have read and accept the confidentiality terms above.</span>
         </label>
         <Err id="terms-error" text={state.errors?.accept_terms} />
       </div>
-      {state.message && <p role="alert" className="text-sm text-wine-600">{state.message}</p>}
+      {state.message && <p role="alert" className="text-sm text-danger">{state.message}</p>}
       <button type="submit" disabled={pending} className="btn-wine disabled:opacity-60">
         {pending ? "One moment…" : "Enter the investor site"}
       </button>
@@ -76,7 +76,7 @@ export function InterestForm({ ranges }: { ranges: readonly string[] }) {
   if (state.status === "ok")
     return (
       <div role="status" className="rounded-xl border border-gold-deep/40 bg-paper p-8">
-        <p className="display text-2xl text-wine-900">Thank you.</p>
+        <p className="display text-2xl text-heading">Thank you.</p>
         <p className="mt-3 leading-relaxed text-muted">Hagai has your note and will be in touch personally.</p>
       </div>
     );
@@ -86,10 +86,10 @@ export function InterestForm({ ranges }: { ranges: readonly string[] }) {
         <legend className="label">I&apos;m interested in</legend>
         <div className="grid gap-3 sm:grid-cols-2">
           {[["poc", "Malbec POC", "$5M"], ["malbec-1", "Malbec 1", "$25M target"]].map(([value, name, size]) => (
-            <label key={value} className="flex cursor-pointer items-start gap-3 rounded-md border border-line p-4 has-[:checked]:border-wine-800 has-[:checked]:bg-sand/50">
-              <input type="checkbox" name="vehicles" value={value} className="mt-1 accent-wine-800" />
+            <label key={value} className="flex cursor-pointer items-start gap-3 rounded-md border border-line p-4 has-[:checked]:border-accent has-[:checked]:bg-sand/50">
+              <input type="checkbox" name="vehicles" value={value} className="mt-1 accent-accent" />
               <span>
-                <span className="block font-display text-lg text-wine-900">{name}</span>
+                <span className="block font-display text-lg text-heading">{name}</span>
                 <span className="text-sm text-muted">{size}</span>
               </span>
             </label>
@@ -109,7 +109,7 @@ export function InterestForm({ ranges }: { ranges: readonly string[] }) {
         <label htmlFor="note" className="label">Anything you&apos;d like us to know <span className="ml-2 font-normal text-muted">optional</span></label>
         <textarea id="note" name="note" rows={4} className="field" />
       </div>
-      {state.message && <p role="alert" className="text-sm text-wine-600">{state.message}</p>}
+      {state.message && <p role="alert" className="text-sm text-danger">{state.message}</p>}
       <div className="flex flex-wrap items-center gap-4">
         <button type="submit" disabled={pending} className="btn-wine disabled:opacity-60">
           {pending ? "Sending…" : "Send indication"}

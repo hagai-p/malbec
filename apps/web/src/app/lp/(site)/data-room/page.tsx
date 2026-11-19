@@ -20,10 +20,10 @@ async function DocumentList() {
               <li key={d.id}>
                 <Link href={`/lp/data-room/${d.id}`} prefetch={false} className="group flex items-baseline justify-between gap-6 py-5">
                   <span>
-                    <span className="font-display text-xl text-wine-900 group-hover:underline">{d.title}</span>
+                    <span className="font-display text-xl text-heading group-hover:underline">{d.title}</span>
                     {d.description && <span className="mt-1 block text-sm text-muted">{d.description}</span>}
                   </span>
-                  <span className="shrink-0 text-sm text-wine-800">Open →</span>
+                  <span className="shrink-0 text-sm text-accent">Open →</span>
                 </Link>
               </li>
             ))}

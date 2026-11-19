@@ -21,14 +21,14 @@ export default async function LegalPage({ params }: { params: Promise<{ doc: str
       <Header />
       <main id="main" className="page max-w-3xl pb-24 pt-16">
         <p className="eyebrow">Legal</p>
-        <h1 className="display mt-4 text-4xl text-wine-900 sm:text-5xl">{page.title}</h1>
+        <h1 className="display mt-4 text-4xl text-heading sm:text-5xl">{page.title}</h1>
         <p className="mt-4 rounded-md border border-gold-deep/40 bg-paper px-4 py-3 text-sm text-muted">
           Draft for review by counsel. Not final.
         </p>
         <div className="mt-10 space-y-10">
           {page.sections.map((s) => (
             <section key={s.heading}>
-              <h2 className="font-display text-2xl text-wine-900">{s.heading}</h2>
+              <h2 className="font-display text-2xl text-heading">{s.heading}</h2>
               {s.body.map((p) => (
                 <p key={p} className="mt-4 leading-relaxed text-muted">{p}</p>
               ))}

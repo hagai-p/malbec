@@ -67,7 +67,7 @@ export function DdForm({ token, steps, initial, required }: Props) {
   if (done)
     return (
       <div role="status" className="rounded-xl border border-gold-deep/40 bg-paper p-10 text-center">
-        <p className="display text-3xl text-wine-900">Submitted. Thank you.</p>
+        <p className="display text-3xl text-heading">Submitted. Thank you.</p>
         <p className="mx-auto mt-4 max-w-md leading-relaxed text-muted">
           We have everything we need for now. We&apos;ll read it carefully and come back to you personally.
         </p>
@@ -97,11 +97,11 @@ export function DdForm({ token, steps, initial, required }: Props) {
         <span aria-live="polite">
           {saved === "saving" && "Saving…"}
           {saved === "saved" && "Draft saved"}
-          {saved === "error" && <span className="text-wine-600">Couldn&apos;t save. Check your connection.</span>}
+          {saved === "error" && <span className="text-danger">Couldn&apos;t save. Check your connection.</span>}
         </span>
       </div>
 
-      <h2 ref={heading} tabIndex={-1} className="display mt-10 text-3xl text-wine-900 outline-none">{current.title}</h2>
+      <h2 ref={heading} tabIndex={-1} className="display mt-10 text-3xl text-heading outline-none">{current.title}</h2>
       <p className="mt-2 text-muted">{current.intro}</p>
 
       <div className="mt-8 space-y-7">
@@ -113,7 +113,7 @@ export function DdForm({ token, steps, initial, required }: Props) {
             maxLength: f.maxLength,
             "aria-invalid": isMissing || undefined,
             "aria-describedby": f.hint ? `${f.key}-hint` : undefined,
-            className: `field ${isMissing ? "!border-wine-600" : ""}`,
+            className: `field ${isMissing ? "!border-danger" : ""}`,
             onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => set(f.key, e.target.value),
           };
           return (
@@ -129,13 +129,13 @@ export function DdForm({ token, steps, initial, required }: Props) {
                   {f.maxLength && ` ${(answers[f.key] ?? "").length}/${f.maxLength}`}
                 </p>
               )}
-              {isMissing && <p className="mt-2 text-sm text-wine-600">Please fill this in before submitting.</p>}
+              {isMissing && <p className="mt-2 text-sm text-danger">Please fill this in before submitting.</p>}
             </div>
           );
         })}
       </div>
 
-      {error && <p role="alert" className="mt-8 text-sm text-wine-600">{error}</p>}
+      {error && <p role="alert" className="mt-8 text-sm text-danger">{error}</p>}
 
       <div className="mt-10 flex items-center justify-between border-t border-line pt-6">
         <button type="button" onClick={() => go(step - 1)} disabled={step === 0} className="btn-ghost disabled:invisible">

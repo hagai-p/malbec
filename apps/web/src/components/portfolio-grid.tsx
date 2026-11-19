@@ -20,7 +20,7 @@ export function PortfolioGrid({ companies }: { companies: Company[] }) {
             aria-pressed={filter === f}
             onClick={() => setFilter(f)}
             className={`rounded-full border px-4 py-2 text-sm transition-colors ${
-              filter === f ? "border-wine-800 bg-wine-800 text-cream" : "border-line bg-paper text-muted hover:border-wine-800 hover:text-wine-800"
+              filter === f ? "border-accent bg-wine-800 text-cream" : "border-line bg-paper text-muted hover:border-accent hover:text-accent"
             }`}
           >
             {f}
@@ -49,10 +49,10 @@ export function PortfolioGrid({ companies }: { companies: Company[] }) {
                   {c.country} · {c.sector}
                 </span>
               </div>
-              <h3 className="display mt-6 text-2xl text-wine-900">{c.name}</h3>
+              <h3 className="display mt-6 text-2xl text-heading">{c.name}</h3>
               <p className="mt-3 leading-relaxed text-muted">{c.oneLiner}</p>
               {c.bridge && <p className="mt-4 font-display italic text-gold-deep">{c.bridge}</p>}
-              <span className="mt-auto pt-6 text-sm font-medium text-wine-800 group-hover:underline">Read more →</span>
+              <span className="mt-auto pt-6 text-sm font-medium text-accent group-hover:underline">Read more →</span>
             </Link>
           </li>
                       ))}
@@ -62,7 +62,7 @@ export function PortfolioGrid({ companies }: { companies: Company[] }) {
       })}
       <ul className="mt-12">
         <li className="flex min-h-48 flex-col justify-center rounded-xl border border-dashed border-gold-deep/50 p-7">
-          <p className="display text-2xl italic text-wine-900">More in the oven.</p>
+          <p className="display text-2xl italic text-heading">More in the oven.</p>
           <p className="mt-3 max-w-xl leading-relaxed text-muted">
             Several more companies are on their way. We&apos;ll introduce them when the time is right.
           </p>

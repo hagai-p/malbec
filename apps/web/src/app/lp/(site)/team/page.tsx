@@ -13,7 +13,7 @@ function Compact({ people }: { people: Person[] }) {
         <li key={p.name} className="flex gap-5">
           <Avatar person={p} />
           <div>
-            <h3 className="font-display text-xl text-wine-900">{p.name}</h3>
+            <h3 className="font-display text-xl text-heading">{p.name}</h3>
             <p className="text-sm text-gold-deep">{p.role}{p.affiliation && ` · ${p.affiliation}`}</p>
             <p className="mt-3 text-sm leading-relaxed text-muted">{p.bio}</p>
           </div>
@@ -29,7 +29,7 @@ export default function LpTeam() {
       <Block title="Why us">
         <div className="max-w-2xl space-y-4 border-l-2 border-gold-deep pl-6 text-lg leading-relaxed text-ink/85">
           {founderStory.map((p) => <p key={p}>{p}</p>)}
-          <p className="font-display italic text-wine-800">Hagai Platin</p>
+          <p className="font-display italic text-accent">Hagai Platin</p>
         </div>
         <p className="mt-3 text-xs text-muted">Draft, based on the “VC as an Export?” talk. To be approved by Hagai.</p>
       </Block>
@@ -71,7 +71,7 @@ export default function LpTeam() {
             <li key={s.name} className="flex items-center gap-4">
               <span className="font-display text-sm italic text-gold-deep">{String(i + 1).padStart(2, "0")}</span>
               <span className="flex-1 rounded-lg border border-line bg-paper px-5 py-4">
-                <span className="font-display text-lg text-wine-900">{s.name}</span>
+                <span className="font-display text-lg text-heading">{s.name}</span>
                 <span className="ml-3 text-sm text-muted">{s.note}</span>
               </span>
             </li>

@@ -18,14 +18,14 @@ export default function Terms() {
           {open.map((v) => (
             <section key={v.key} className="rounded-xl border border-line bg-paper">
               <header className="border-b border-line p-6">
-                <h3 className="font-display text-2xl text-wine-900">{v.name}</h3>
+                <h3 className="font-display text-2xl text-heading">{v.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{v.summary}</p>
               </header>
               <dl>
                 {v.terms.map((t) => (
                   <div key={t.label} className="flex items-baseline justify-between gap-6 border-b border-line/70 px-6 py-4 last:border-0">
                     <dt className="text-sm text-muted">{t.label}</dt>
-                    <dd className={`text-right font-display text-lg ${t.value === TBC ? "italic text-muted" : "text-wine-900"}`}>{t.value}</dd>
+                    <dd className={`text-right font-display text-lg ${t.value === TBC ? "italic text-muted" : "text-heading"}`}>{t.value}</dd>
                   </div>
                 ))}
               </dl>
@@ -43,7 +43,7 @@ export default function Terms() {
           ].map(([k, v]) => (
             <div key={k} className="grid gap-1 py-4 md:grid-cols-[14rem_1fr]">
               <dt className="text-sm text-muted">{k}</dt>
-              <dd className="font-display text-lg text-wine-900">{v}</dd>
+              <dd className="font-display text-lg text-heading">{v}</dd>
             </div>
           ))}
         </dl>

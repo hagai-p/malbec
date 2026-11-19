@@ -2,19 +2,32 @@
 
 /* Malbec Ventures brand tokens. Source of truth; mirrored in packages/brand/tokens.css */
 @theme {
+  /* Dark surfaces and accent fill */
   --color-wine-950: #1a070f;
   --color-wine-900: #2a0b17;
   --color-wine-800: #4e0e25;
   --color-wine-700: #651530;
   --color-wine-600: #7d2241;
-  --color-gold: #d1c09f;
-  --color-gold-deep: #a48a56;
+  /* Text and accents on dark surfaces */
   --color-cream: #f7f3ec;
+  --color-gold: #d1c09f;
+  /* Second accent, used on the page background */
+  --color-gold-deep: #86692f;
+  /* Page, surfaces, rules */
+  --color-page: #f7f3ec;
   --color-paper: #fffdf9;
   --color-sand: #ece5d8;
   --color-line: #ddd3c3;
+  /* Text on the page background */
   --color-ink: #24131a;
   --color-muted: #6c5a61;
+  --color-heading: #2a0b17;
+  --color-accent: #4e0e25;
+  --color-danger: #7d2241;
+  --color-grape: #4e0e25;
+  --color-grape-edge: #7d2241;
+  /* First series in charts */
+  --color-chart: #4e0e25;
 
   --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
@@ -22,12 +35,120 @@
   --container-page: 76rem;
 }
 
+/* ------------------------------------------------------------------------------------------
+ * Design directions under review. "estate" is the default above.
+ * Selected with NEXT_PUBLIC_THEME (see src/lib/theme.ts). Once one is chosen, fold its values
+ * into @theme and delete the others.
+ * ---------------------------------------------------------------------------------------- */
+
+/* B · Gallery — white, modern, precise */
+[data-theme="gallery"] {
+  --color-wine-950: #0e1b30;
+  --color-wine-900: #1f3a5f;
+  --color-wine-800: #7b1e3b;
+  --color-wine-700: #651530;
+  --color-wine-600: #a3234a;
+  --color-cream: #ffffff;
+  --color-gold: #c3d4ec;
+  --color-gold-deep: #1f3a5f;
+  --color-page: #ffffff;
+  --color-paper: #ffffff;
+  --color-sand: #f3f4f7;
+  --color-line: #e2e5eb;
+  --color-ink: #111114;
+  --color-muted: #595f6e;
+  --color-heading: #111114;
+  --color-accent: #7b1e3b;
+  --color-danger: #b3261e;
+  --color-grape: #7b1e3b;
+  --color-chart: #7b1e3b;
+  --color-grape-edge: #a3234a;
+  --font-display: var(--font-intertight), "Inter Tight", Inter, system-ui, sans-serif;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+}
+
+/* C · Night harvest — dark, bold, deck-like */
+[data-theme="night"] {
+  --color-wine-950: #0b0f24;
+  --color-wine-900: #232c58;
+  --color-wine-800: #7d2f45;
+  --color-wine-700: #93384f;
+  --color-wine-600: #a8425c;
+  --color-cream: #f2f1ee;
+  --color-gold: #e0a458;
+  --color-gold-deep: #e0a458;
+  --color-page: #141a33;
+  --color-paper: #1e2647;
+  --color-sand: #283260;
+  --color-line: #343f6e;
+  --color-ink: #f2f1ee;
+  --color-muted: #aab1cc;
+  --color-heading: #ffffff;
+  --color-accent: #ee9db6;
+  --color-danger: #ff9a9a;
+  --color-grape: #b0507a;
+  --color-chart: #e07a9c;
+  --color-grape-edge: #d98aa8;
+  --font-display: var(--font-sora), Sora, Inter, system-ui, sans-serif;
+  --radius-xl: 14px;
+}
+
+/* Sans-serif directions: weight carries the emphasis that italics carry in Estate. */
+[data-theme="gallery"] .font-display,
+[data-theme="night"] .font-display {
+  font-weight: 650;
+  letter-spacing: -0.012em;
+  font-style: normal;
+}
+[data-theme="gallery"] .display,
+[data-theme="night"] .display {
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.06;
+}
+[data-theme="gallery"] .display em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+[data-theme="night"] .display em {
+  font-style: normal;
+  color: var(--color-gold);
+}
+[data-theme="gallery"] .eyebrow,
+[data-theme="night"] .eyebrow {
+  font-weight: 600;
+}
+[data-theme="gallery"] .eyebrow {
+  color: var(--color-accent);
+}
+[data-theme="gallery"] [class*="btn-"] {
+  border-radius: 4px;
+}
+[data-theme="night"] [class*="btn-"] {
+  border-radius: 10px;
+  font-weight: 600;
+}
+/* Logos are supplied on white: on a dark page they sit on a white chip instead of blending. */
+[data-theme="night"] .mix-blend-multiply {
+  mix-blend-mode: normal;
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px;
+}
+[data-theme="night"] ::selection {
+  background: var(--color-gold);
+  color: var(--color-wine-950);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-cream);
+  background: var(--color-page);
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -64,7 +185,7 @@ body {
 }
 
 @utility btn-ghost {
-  @apply btn border border-wine-800/25 text-wine-800 hover:border-wine-800 hover:bg-wine-800/5;
+  @apply btn border border-accent/25 text-accent hover:border-accent hover:bg-accent/5;
 }
 
 @utility btn-light {
@@ -72,7 +193,7 @@ body {
 }
 
 @utility btn-gold {
-  @apply btn bg-gold text-wine-950 hover:bg-cream;
+  @apply btn bg-gold text-wine-950 hover:brightness-110;
 }
 
 @utility rule {
@@ -80,7 +201,7 @@ body {
 }
 
 @utility field {
-  @apply w-full rounded-md border border-line bg-paper px-4 py-3 text-base text-ink placeholder:text-muted/60 focus:border-wine-800 focus:outline-none focus:ring-2 focus:ring-wine-800/15;
+  @apply w-full rounded-md border border-line bg-paper px-4 py-3 text-base text-ink placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15;
 }
 
 @utility label {

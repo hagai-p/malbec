@@ -53,10 +53,10 @@ async function Verified({ slug, number, eyebrow, title, lede, children }: PagePr
     <>
       <main id="main" className="mx-auto max-w-5xl px-6 pb-20 pt-12 sm:px-12 sm:pt-16">
         <p className="eyebrow">
-          {number && <span className="mr-2 text-wine-800">{number} ·</span>}
+          {number && <span className="mr-2 text-accent">{number} ·</span>}
           {eyebrow}
         </p>
-        <h1 className="display mt-4 max-w-3xl text-4xl text-wine-900 sm:text-5xl">{title}</h1>
+        <h1 className="display mt-4 max-w-3xl text-4xl text-heading sm:text-5xl">{title}</h1>
         {lede && <p className="lede mt-6 max-w-2xl">{lede}</p>}
         <div className="mt-12 space-y-16">{typeof children === "function" ? children(viewer) : children}</div>
       </main>
@@ -65,11 +65,11 @@ async function Verified({ slug, number, eyebrow, title, lede, children }: PagePr
           Confidential. Prepared for <strong className="font-medium text-ink">{viewer.fullName || viewer.email}</strong>
           {viewer.firm && <> ({viewer.firm})</>}. Not for distribution. This is not an offer to sell or a solicitation to
           buy any security; any offer is made only through the fund&apos;s offering documents.{" "}
-          <a href="/lp/important-information" className="text-wine-800 underline">Important information</a>
+          <a href="/lp/important-information" className="text-accent underline">Important information</a>
         </p>
         {viewer.role === "admin" && (
           <p className="mt-2">
-            <a href="/lp/admin" className="text-wine-800 underline">Admin</a>
+            <a href="/lp/admin" className="text-accent underline">Admin</a>
           </p>
         )}
       </footer>
@@ -80,7 +80,7 @@ async function Verified({ slug, number, eyebrow, title, lede, children }: PagePr
 export function Block({ title, children, note }: { title: string; children: React.ReactNode; note?: string }) {
   return (
     <section>
-      <h2 className="display text-2xl text-wine-900 sm:text-3xl">{title}</h2>
+      <h2 className="display text-2xl text-heading sm:text-3xl">{title}</h2>
       {note && <p className="mt-3 max-w-2xl leading-relaxed text-muted">{note}</p>}
       <div className="mt-7">{children}</div>
     </section>
@@ -94,7 +94,7 @@ export function Facts({ items, cols = 4 }: { items: readonly { label: string; va
       {items.map((f) => (
         <div key={f.label} className="bg-paper p-6">
           <dt className="eyebrow">{f.label}</dt>
-          <dd className={`mt-3 font-display text-2xl ${f.value === "To be confirmed" ? "italic text-muted" : "text-wine-900"}`}>{f.value}</dd>
+          <dd className={`mt-3 font-display text-2xl ${f.value === "To be confirmed" ? "italic text-muted" : "text-heading"}`}>{f.value}</dd>
           {f.note && <dd className="mt-1 text-sm text-muted">{f.note}</dd>}
         </div>
       ))}

@@ -21,7 +21,7 @@ export default function TrackRecord() {
       </Block>
 
       <Block title="Who we invest alongside">
-        <p className="font-display text-xl leading-relaxed text-wine-900">
+        <p className="font-display text-xl leading-relaxed text-heading">
           {coInvestors.map((n, i) => (
             <span key={n}>{n}{i < coInvestors.length - 1 && <span className="mx-2 text-gold-deep">·</span>}</span>
           ))}
@@ -36,7 +36,7 @@ export default function TrackRecord() {
         <ul className="divide-y divide-line border-y border-line">
           {partnerRecords.map((p) => (
             <li key={p.name} className="grid gap-2 py-5 md:grid-cols-[14rem_1fr]">
-              <span className="font-display text-lg text-wine-900">{p.name}</span>
+              <span className="font-display text-lg text-heading">{p.name}</span>
               <span className="leading-relaxed text-muted">{p.record}</span>
             </li>
           ))}

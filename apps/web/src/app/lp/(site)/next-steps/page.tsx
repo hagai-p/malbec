@@ -15,7 +15,7 @@ export default function NextSteps() {
         <div className="divide-y divide-line border-y border-line">
           {faq.map((f) => (
             <details key={f.q} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-baseline justify-between gap-6 font-display text-xl text-wine-900">
+              <summary className="flex cursor-pointer list-none items-baseline justify-between gap-6 font-display text-xl text-heading">
                 {f.q}
                 <span aria-hidden className="text-gold-deep transition-transform group-open:rotate-45">+</span>
               </summary>

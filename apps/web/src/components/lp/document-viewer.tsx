@@ -31,7 +31,7 @@ export function DocumentViewer({ src, isPdf, watermark }: { src: string; isPdf: 
           const mark = document.createElement("div");
           mark.textContent = watermark;
           mark.className =
-            "pointer-events-none absolute inset-0 flex items-center justify-center -rotate-[24deg] text-center font-sans text-[clamp(1rem,3vw,2rem)] font-medium text-wine-800/10 select-none";
+            "pointer-events-none absolute inset-0 flex items-center justify-center -rotate-[24deg] text-center font-sans text-[clamp(1rem,3vw,2rem)] font-medium text-accent/10 select-none";
           wrap.append(canvas, mark);
           holder.current?.append(wrap);
           await page.render({ canvas, viewport }).promise;
@@ -52,14 +52,14 @@ export function DocumentViewer({ src, isPdf, watermark }: { src: string; isPdf: 
       {isPdf ? (
         <>
           {state === "loading" && <p className="text-sm text-muted">Loading document…</p>}
-          {state === "error" && <p role="alert" className="text-sm text-wine-600">This document could not be opened. Please try again or write to Hagai.</p>}
+          {state === "error" && <p role="alert" className="text-sm text-danger">This document could not be opened. Please try again or write to Hagai.</p>}
           <div ref={holder} />
         </>
       ) : (
         <div className="relative overflow-hidden rounded-lg border border-line bg-white">
           {/* eslint-disable-next-line @next/next/no-img-element -- private, per-request file; must not pass through the image optimiser cache */}
           <img src={src} alt="" draggable={false} className="block h-auto w-full" />
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center -rotate-[24deg] text-2xl font-medium text-wine-800/10">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center -rotate-[24deg] text-2xl font-medium text-accent/10">
             {watermark}
           </div>
         </div>

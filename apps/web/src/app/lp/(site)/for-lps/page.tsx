@@ -40,8 +40,8 @@ export default function ForLps() {
             ["Data room", "The fund documents, viewable here as soon as they are final.", "/lp/data-room"],
           ].map(([t, d, h]) => (
             <li key={t}>
-              <Link href={h} prefetch={false} className="block h-full rounded-xl border border-line bg-paper p-6 hover:border-wine-800">
-                <p className="font-display text-xl text-wine-900">{t} →</p>
+              <Link href={h} prefetch={false} className="block h-full rounded-xl border border-line bg-paper p-6 hover:border-accent">
+                <p className="font-display text-xl text-heading">{t} →</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{d}</p>
               </Link>
             </li>

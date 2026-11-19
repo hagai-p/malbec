@@ -11,7 +11,7 @@ export default async function AdminInvestors() {
   return (
     <div className="space-y-14">
       <section>
-        <h1 className="display text-4xl text-wine-900">Investors</h1>
+        <h1 className="display text-4xl text-heading">Investors</h1>
         <p className="mt-2 text-muted">Everyone who has been invited to the LP site. Nobody else can get in.</p>
         <div className="mt-8 overflow-x-auto rounded-xl border border-line bg-paper">
           <table className="w-full min-w-[46rem] text-left text-sm">
@@ -30,12 +30,12 @@ export default async function AdminInvestors() {
                     {p.role !== "admin" && (
                       <div className="flex justify-end gap-3">
                         {p.status === "invited" && (
-                          <form action={resendInvite}><input type="hidden" name="id" value={p.id} /><button className="text-wine-800 underline">Resend</button></form>
+                          <form action={resendInvite}><input type="hidden" name="id" value={p.id} /><button className="text-accent underline">Resend</button></form>
                         )}
                         <form action={setLpStatus}>
                           <input type="hidden" name="id" value={p.id} />
                           <input type="hidden" name="status" value={p.status === "suspended" ? "active" : "suspended"} />
-                          <button className="text-wine-800 underline">{p.status === "suspended" ? "Restore" : "Suspend"}</button>
+                          <button className="text-accent underline">{p.status === "suspended" ? "Restore" : "Suspend"}</button>
                         </form>
                       </div>
                     )}
@@ -48,7 +48,7 @@ export default async function AdminInvestors() {
         </div>
       </section>
       <section className="max-w-3xl">
-        <h2 className="display text-2xl text-wine-900">Invite an investor</h2>
+        <h2 className="display text-2xl text-heading">Invite an investor</h2>
         <p className="mb-6 mt-2 text-muted">They receive a personal email from you with a single-use link.</p>
         <InviteForm />
       </section>

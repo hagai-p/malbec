@@ -14,7 +14,7 @@ async function Questionnaire({ params }: { params: Promise<{ token: string }> })
   if (!invite)
     return (
       <div className="rounded-xl border border-line bg-paper p-10">
-        <p className="display text-2xl text-wine-900">This link isn&apos;t valid.</p>
+        <p className="display text-2xl text-heading">This link isn&apos;t valid.</p>
         <p className="mt-3 leading-relaxed text-muted">
           It may have expired or been mistyped. Please ask your contact at Malbec Ventures for a new one.
         </p>
@@ -24,7 +24,7 @@ async function Questionnaire({ params }: { params: Promise<{ token: string }> })
   if (invite.status === "completed")
     return (
       <div className="rounded-xl border border-gold-deep/40 bg-paper p-10">
-        <p className="display text-2xl text-wine-900">Already submitted. Thank you.</p>
+        <p className="display text-2xl text-heading">Already submitted. Thank you.</p>
         <p className="mt-3 leading-relaxed text-muted">We have your answers and will be in touch.</p>
       </div>
     );
@@ -44,7 +44,7 @@ export default function DdPage({ params }: { params: Promise<{ token: string }> 
       <Header />
       <main id="main" className="page max-w-3xl pb-24 pt-14">
         <p className="eyebrow">Due diligence</p>
-        <h1 className="display mt-4 text-4xl text-wine-900 sm:text-5xl">Tell us the whole story.</h1>
+        <h1 className="display mt-4 text-4xl text-heading sm:text-5xl">Tell us the whole story.</h1>
         <p className="lede mt-5">
           Eighteen questions, about half an hour. Answer plainly: we would rather read what is true than what is polished.
         </p>

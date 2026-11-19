@@ -15,7 +15,7 @@ async function UpdateList() {
           <time dateTime={u.published_at} className="eyebrow">
             {new Date(u.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
           </time>
-          <h2 className="display mt-3 text-2xl text-wine-900">{u.title}</h2>
+          <h2 className="display mt-3 text-2xl text-heading">{u.title}</h2>
           <div className="mt-4 max-w-2xl space-y-4 leading-relaxed text-ink/85">
             {u.body.split(/\n{2,}/).map((p, i) => <p key={i}>{p}</p>)}
           </div>

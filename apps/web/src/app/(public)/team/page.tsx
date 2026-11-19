@@ -18,11 +18,11 @@ function People({ title, people, large = false }: { title: string; people: Perso
           <li key={p.name} className={large ? "" : "flex gap-6"}>
             <Avatar person={p} size={large ? "lg" : "md"} />
             <div className={large ? "mt-6" : ""}>
-              <h3 className={`font-display text-wine-900 ${large ? "text-2xl" : "text-xl"}`}>{p.name}</h3>
+              <h3 className={`font-display text-heading ${large ? "text-2xl" : "text-xl"}`}>{p.name}</h3>
               <p className="mt-1 text-sm text-gold-deep">{p.role}</p>
               <p className="mt-4 leading-relaxed text-muted">{p.bio}</p>
               {p.linkedin && (
-                <a href={p.linkedin} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm font-medium text-wine-800 hover:underline">
+                <a href={p.linkedin} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm font-medium text-accent hover:underline">
                   LinkedIn ↗<span className="sr-only"> — {p.name}</span>
                 </a>
               )}

@@ -27,7 +27,7 @@ function Field({
       </label>
       {textarea ? <textarea rows={rows} {...props} /> : <input type={type} {...props} />}
       {hint && !error && <p id={`${name}-hint`} className="mt-2 text-sm text-muted">{hint}</p>}
-      {error && <p id={`${name}-error`} className="mt-2 text-sm text-wine-600">{error}</p>}
+      {error && <p id={`${name}-error`} className="mt-2 text-sm text-danger">{error}</p>}
     </div>
   );
 }
@@ -46,7 +46,7 @@ function Honeypot() {
 function Done({ title, body }: { title: string; body: string }) {
   return (
     <div role="status" className="rounded-xl border border-gold-deep/40 bg-paper p-8">
-      <p className="display text-2xl text-wine-900">{title}</p>
+      <p className="display text-2xl text-heading">{title}</p>
       <p className="mt-3 leading-relaxed text-muted">{body}</p>
     </div>
   );
@@ -64,7 +64,7 @@ export function ContactForm() {
       </div>
       <Field name="organisation" label="Organisation" state={state} autoComplete="organization" />
       <Field name="message" label="Message" required textarea rows={6} state={state} />
-      {state.message && <p role="alert" className="text-sm text-wine-600">{state.message}</p>}
+      {state.message && <p role="alert" className="text-sm text-danger">{state.message}</p>}
       <button type="submit" disabled={pending} className="btn-wine disabled:opacity-60">
         {pending ? "Sending…" : "Send message"}
       </button>
@@ -90,7 +90,7 @@ export function PitchForm() {
       <Field name="stage" label="Stage" state={state} hint="For example: pre-seed, seed, Series A." />
       <Field name="short_pitch" label="What are you building?" required textarea rows={3} maxLength={280} state={state} hint="One or two sentences, 280 characters at most." />
       <Field name="bridge" label="Where does Israel–Latin America come in?" textarea rows={4} state={state} />
-      {state.message && <p role="alert" className="text-sm text-wine-600">{state.message}</p>}
+      {state.message && <p role="alert" className="text-sm text-danger">{state.message}</p>}
       <button type="submit" disabled={pending} className="btn-wine disabled:opacity-60">
         {pending ? "Sending…" : "Send to Malbec"}
       </button>

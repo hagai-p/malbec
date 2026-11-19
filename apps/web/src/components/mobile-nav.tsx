@@ -13,12 +13,12 @@ export function MobileNav({ onDark }: { onDark: boolean }) {
         aria-expanded={open}
         aria-controls="mobile-nav"
         onClick={() => setOpen((v) => !v)}
-        className={`btn !px-4 !py-2 border ${onDark ? "border-cream/40 text-cream" : "border-wine-800/25 text-wine-800"}`}
+        className={`btn !px-4 !py-2 border ${onDark ? "border-cream/40 text-cream" : "border-accent/25 text-accent"}`}
       >
         {open ? "Close" : "Menu"}
       </button>
       {open && (
-        <div id="mobile-nav" className="absolute inset-x-0 top-20 border-y border-line bg-cream text-ink shadow-lg">
+        <div id="mobile-nav" className="absolute inset-x-0 top-20 border-y border-line bg-page text-ink shadow-lg">
           <nav aria-label="Mobile" className="page flex flex-col py-4">
             {nav.map((item) => (
               <Link

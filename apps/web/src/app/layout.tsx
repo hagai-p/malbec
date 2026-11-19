@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Inter_Tight, Playfair_Display, Sora } from "next/font/google";
+import { theme } from "@/lib/theme";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -10,6 +11,9 @@ const playfair = Playfair_Display({
   display: "swap",
   style: ["normal", "italic"],
 });
+
+const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-intertight", display: "swap" });
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.publicUrl),
@@ -22,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" data-theme={theme} className={`${inter.variable} ${playfair.variable} ${interTight.variable} ${sora.variable}`}>
       <body className="min-h-dvh">{children}</body>
     </html>
   );

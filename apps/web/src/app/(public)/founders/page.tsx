@@ -28,7 +28,7 @@ export default function Founders() {
           <ul className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2">
             {founderValue.map((v) => (
               <li key={v.title} className="bg-paper p-8 sm:p-10">
-                <h2 className="display text-2xl text-wine-900">{v.title}</h2>
+                <h2 className="display text-2xl text-heading">{v.title}</h2>
                 <p className="mt-4 leading-relaxed text-muted">{v.body}</p>
               </li>
             ))}
@@ -53,7 +53,7 @@ export default function Founders() {
         <section id="pitch" className="page grid gap-12 py-20 sm:py-28 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <div>
             <p className="eyebrow">Start here</p>
-            <h2 className="display mt-4 text-3xl text-wine-900 sm:text-4xl">Tell us what you&apos;re building.</h2>
+            <h2 className="display mt-4 text-3xl text-heading sm:text-4xl">Tell us what you&apos;re building.</h2>
             <p className="mt-5 leading-relaxed text-muted">
               A short note is all we need for a first read. If it looks like a fit we&apos;ll set up a conversation, and
               later send you a personal link to our due-diligence questionnaire.

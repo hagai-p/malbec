@@ -26,29 +26,29 @@ export default function Opportunity() {
           <ul className="space-y-6">
             {mirror.points.map((p) => (
               <li key={p.title}>
-                <h3 className="font-display text-lg text-wine-900">{p.title}</h3>
+                <h3 className="font-display text-lg text-heading">{p.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted">{p.text}</p>
               </li>
             ))}
           </ul>
         </div>
-        <p className="mt-6 font-display text-xl italic text-wine-800">{mirror.line}</p>
+        <p className="mt-6 font-display text-xl italic text-accent">{mirror.line}</p>
         <Sources>{mirror.source}</Sources>
       </Block>
 
       <Block title="Argentine talent, in numbers" note="“We have lots of talent in Argentina.” Is it real? Let the numbers answer.">
         <StatBand cols={4} items={talent.stats.map((s) => ({ value: s.value, label: s.label, note: s.source }))} />
-        <h3 className="mt-10 font-display text-xl text-wine-900">The engine behind it: a free, world-class education system</h3>
+        <h3 className="mt-10 font-display text-xl text-heading">The engine behind it: a free, world-class education system</h3>
         <ul className="mt-5 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
           {talent.engine.map((e) => (
             <li key={e.title} className="bg-paper p-6">
-              <p className="font-display text-lg text-wine-900">{e.title}</p>
+              <p className="font-display text-lg text-heading">{e.title}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted">{e.text}</p>
             </li>
           ))}
         </ul>
-        <h3 className="mt-10 font-display text-xl text-wine-900">The proof abroad: Argentines already build global giants</h3>
-        <ul className="mt-4 font-display text-xl leading-relaxed text-wine-800 flex flex-wrap gap-x-3">
+        <h3 className="mt-10 font-display text-xl text-heading">The proof abroad: Argentines already build global giants</h3>
+        <ul className="mt-4 font-display text-xl leading-relaxed text-accent flex flex-wrap gap-x-3">
           {talent.proof.map((n, i) => (
             <li key={n}>{n}{i < talent.proof.length - 1 && <span aria-hidden className="ml-3 text-gold-deep">·</span>}</li>
           ))}
@@ -99,7 +99,7 @@ export default function Opportunity() {
               <dl className="mt-6 space-y-5">
                 {rows.map((r) => (
                   <div key={r.label} className="grid grid-cols-[7.5rem_1fr] items-baseline gap-4">
-                    <dd className={`font-display text-3xl ${dark ? "text-cream" : "text-wine-900"}`}>{r.value}</dd>
+                    <dd className={`font-display text-3xl ${dark ? "text-cream" : "text-heading"}`}>{r.value}</dd>
                     <dt className={`text-sm leading-relaxed ${dark ? "text-cream/75" : "text-muted"}`}>{r.label}</dt>
                   </div>
                 ))}
@@ -123,9 +123,9 @@ export default function Opportunity() {
             <tbody>
               {acquirers.map((a) => (
                 <tr key={a.company} className="border-b border-line/70 last:border-0">
-                  <th scope="row" className="px-5 py-4 font-display text-lg font-normal text-wine-900">{a.company}</th>
+                  <th scope="row" className="px-5 py-4 font-display text-lg font-normal text-heading">{a.company}</th>
                   <td className="px-5 py-4">{a.buyer}</td>
-                  <td className="px-5 py-4 font-display text-lg text-wine-800">{a.value}</td>
+                  <td className="px-5 py-4 font-display text-lg text-accent">{a.value}</td>
                   <td className="px-5 py-4 text-muted">{a.note}</td>
                 </tr>
               ))}

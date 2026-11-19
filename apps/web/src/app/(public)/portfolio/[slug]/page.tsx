@@ -24,7 +24,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ slug: 
     <>
       <Header />
       <main id="main" className="page pb-24 pt-12 sm:pt-16">
-        <Link href="/portfolio" className="text-sm text-muted hover:text-wine-800">
+        <Link href="/portfolio" className="text-sm text-muted hover:text-accent">
           ← Portfolio
         </Link>
         <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
@@ -35,11 +35,11 @@ export default async function CompanyPage({ params }: { params: Promise<{ slug: 
             <dl className="mt-8 space-y-5 text-sm">
               <div>
                 <dt className="eyebrow">Country</dt>
-                <dd className="mt-1 font-display text-lg text-wine-900">{c.country}</dd>
+                <dd className="mt-1 font-display text-lg text-heading">{c.country}</dd>
               </div>
               <div>
                 <dt className="eyebrow">Sector</dt>
-                <dd className="mt-1 font-display text-lg text-wine-900">{c.sector}</dd>
+                <dd className="mt-1 font-display text-lg text-heading">{c.sector}</dd>
               </div>
             </dl>
             <a href={c.url} target="_blank" rel="noopener noreferrer" className="btn-ghost mt-8">
@@ -47,11 +47,11 @@ export default async function CompanyPage({ params }: { params: Promise<{ slug: 
             </a>
           </div>
           <div>
-            <h1 className="display text-4xl text-wine-900 sm:text-6xl">{c.name}</h1>
+            <h1 className="display text-4xl text-heading sm:text-6xl">{c.name}</h1>
             <p className="lede mt-6">{c.oneLiner}</p>
             <p className="mt-8 text-lg leading-relaxed text-ink/85">{c.description}</p>
             {c.bridge && (
-              <p className="mt-10 border-l-2 border-gold-deep pl-6 font-display text-2xl italic leading-snug text-wine-800">{c.bridge}</p>
+              <p className="mt-10 border-l-2 border-gold-deep pl-6 font-display text-2xl italic leading-snug text-accent">{c.bridge}</p>
             )}
           </div>
         </div>

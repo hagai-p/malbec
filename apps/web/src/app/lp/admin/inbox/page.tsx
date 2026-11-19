@@ -10,10 +10,10 @@ export default async function AdminInbox() {
   const [interest, pitches, dd, contacts] = await Promise.all([listInterest(), listPitches(), listDd(), listContacts()]);
   return (
     <div className="space-y-14">
-      <h1 className="display text-4xl text-wine-900">Inbox</h1>
+      <h1 className="display text-4xl text-heading">Inbox</h1>
 
       <section>
-        <h2 className="display text-2xl text-wine-900">LP indications of interest</h2>
+        <h2 className="display text-2xl text-heading">LP indications of interest</h2>
         <ul className="mt-5 divide-y divide-line rounded-xl border border-line bg-paper">
           {interest.map((i) => (
             <li key={i.id} className="px-5 py-4">
@@ -27,7 +27,7 @@ export default async function AdminInbox() {
       </section>
 
       <section>
-        <h2 className="display text-2xl text-wine-900">Founder pitches</h2>
+        <h2 className="display text-2xl text-heading">Founder pitches</h2>
         <ul className="mt-5 divide-y divide-line rounded-xl border border-line bg-paper">
           {pitches.map((p) => (
             <li key={p.id} className="flex flex-wrap items-start justify-between gap-4 px-5 py-4">
@@ -49,7 +49,7 @@ export default async function AdminInbox() {
       </section>
 
       <section>
-        <h2 className="display text-2xl text-wine-900">DD questionnaires</h2>
+        <h2 className="display text-2xl text-heading">DD questionnaires</h2>
         <ul className="mt-5 divide-y divide-line rounded-xl border border-line bg-paper">
           {dd.map((d) => {
             const status = d.dd_submissions?.status ?? "not started";
@@ -59,7 +59,7 @@ export default async function AdminInbox() {
                   <p className="font-medium text-ink">{d.company_name} <span className="font-normal text-muted">· {d.founder_name}</span></p>
                   <p className="text-sm text-muted">Sent {fmt(d.created_at)} · {status}{d.dd_submissions && ` · last saved ${fmt(d.dd_submissions.updated_at)}`}</p>
                 </div>
-                {d.dd_submissions && <Link href={`/lp/admin/dd/${d.id}`} prefetch={false} className="text-sm text-wine-800 underline">Read answers</Link>}
+                {d.dd_submissions && <Link href={`/lp/admin/dd/${d.id}`} prefetch={false} className="text-sm text-accent underline">Read answers</Link>}
               </li>
             );
           })}
@@ -68,7 +68,7 @@ export default async function AdminInbox() {
       </section>
 
       <section>
-        <h2 className="display text-2xl text-wine-900">Contact messages</h2>
+        <h2 className="display text-2xl text-heading">Contact messages</h2>
         <ul className="mt-5 divide-y divide-line rounded-xl border border-line bg-paper">
           {contacts.map((c) => (
             <li key={c.id} className={`flex flex-wrap items-start justify-between gap-4 px-5 py-4 ${c.handled ? "opacity-55" : ""}`}>
@@ -76,7 +76,7 @@ export default async function AdminInbox() {
                 <p className="font-medium text-ink">{c.name} <span className="font-normal text-muted">· {c.email}{c.organisation && ` · ${c.organisation}`} · {fmt(c.created_at)}</span></p>
                 <p className="mt-2 whitespace-pre-line text-sm leading-relaxed">{c.message}</p>
               </div>
-              {!c.handled && <form action={markHandled}><input type="hidden" name="id" value={c.id} /><button className="text-sm text-wine-800 underline">Mark handled</button></form>}
+              {!c.handled && <form action={markHandled}><input type="hidden" name="id" value={c.id} /><button className="text-sm text-accent underline">Mark handled</button></form>}
             </li>
           ))}
           {!contacts.length && <Empty text="None yet." />}

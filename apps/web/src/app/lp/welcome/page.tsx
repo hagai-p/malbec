@@ -12,9 +12,9 @@ async function Greeting() {
   const first = viewer.fullName.split(" ")[0];
   return (
     <>
-      <h1 className="display mt-4 text-4xl text-wine-900 sm:text-5xl">{first ? `Welcome, ${first}.` : "Welcome."}</h1>
+      <h1 className="display mt-4 text-4xl text-heading sm:text-5xl">{first ? `Welcome, ${first}.` : "Welcome."}</h1>
       {viewer.personalNote && (
-        <p className="mt-6 border-l-2 border-gold-deep pl-5 font-display text-xl italic leading-relaxed text-wine-800">
+        <p className="mt-6 border-l-2 border-gold-deep pl-5 font-display text-xl italic leading-relaxed text-accent">
           {viewer.personalNote}
         </p>
       )}
@@ -39,7 +39,7 @@ async function Greeting() {
 export default function Welcome() {
   return (
     <main id="main" className="mx-auto max-w-2xl px-6 py-14">
-      <Logo href="/lp/welcome" className="text-wine-900" />
+      <Logo href="/lp/welcome" className="text-heading" />
       <p className="eyebrow mt-14">Before you enter</p>
       <Suspense fallback={<p className="mt-6 text-sm text-muted">Opening…</p>}>
         <Greeting />

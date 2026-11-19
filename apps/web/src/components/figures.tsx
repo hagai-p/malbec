@@ -11,19 +11,19 @@ export function ExportMixChart({ bars, tone = "light" }: { bars: readonly Mirror
       <div className={`rounded-xl border p-5 sm:p-7 ${dark ? "border-cream/15 bg-wine-950/40" : "border-line bg-paper"}`}>
         <div className={`flex flex-wrap gap-x-6 gap-y-1 text-xs uppercase tracking-[0.16em] ${dark ? "text-cream/70" : "text-muted"}`}>
           <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-sm bg-gold-deep" />Agriculture</span>
-          <span className="flex items-center gap-2"><span className={`h-2.5 w-2.5 rounded-sm ${dark ? "bg-cream" : "bg-wine-800"}`} />Tech &amp; knowledge</span>
+          <span className="flex items-center gap-2"><span className={`h-2.5 w-2.5 rounded-sm ${dark ? "bg-cream" : "bg-chart"}`} />Tech &amp; knowledge</span>
           <span className="ml-auto normal-case tracking-normal">Share of exports, %</span>
         </div>
         <div aria-hidden className="mt-6 grid grid-cols-3 gap-3 sm:gap-8">
           {bars.map((b) => (
             <div key={b.label}>
               <div className={`flex items-end justify-center gap-2 border-b sm:gap-4 ${dark ? "border-cream/25" : "border-line"}`} style={{ height: H + 28 }}>
-                {[{ v: b.agriculture, c: "bg-gold-deep" }, { v: b.tech, c: dark ? "bg-cream" : "bg-wine-800" }].map((x, i) => (
+                {[{ v: b.agriculture, c: "bg-gold-deep" }, { v: b.tech, c: dark ? "bg-cream" : "bg-chart" }].map((x, i) => (
                   <div key={i} className="flex w-9 flex-col items-center justify-end sm:w-14">
                     {i === 1 && b.question && (
-                      <span className={`mb-1 font-display text-3xl italic ${dark ? "text-gold" : "text-wine-600"}`}>?</span>
+                      <span className={`mb-1 font-display text-3xl italic ${dark ? "text-gold" : "text-danger"}`}>?</span>
                     )}
-                    <span className={`mb-1 font-display text-lg ${dark ? "text-cream" : "text-wine-900"}`}>{x.v}</span>
+                    <span className={`mb-1 font-display text-lg ${dark ? "text-cream" : "text-heading"}`}>{x.v}</span>
                     <div className={`w-full rounded-t ${x.c}`} style={{ height: Math.max((x.v / 80) * H, 2) }} />
                   </div>
                 ))}
@@ -46,7 +46,7 @@ export function ExportMixChart({ bars, tone = "light" }: { bars: readonly Mirror
 
 /** Horizontal bars for a handful of labelled values. */
 export function PriceBars({ items }: { items: readonly { label: string; text: string; scale: number; tone?: "wine" | "gold" | "muted" }[] }) {
-  const tones = { wine: "bg-wine-800", gold: "bg-gold-deep", muted: "bg-muted/45" };
+  const tones = { wine: "bg-chart", gold: "bg-gold-deep", muted: "bg-muted/45" };
   return (
     <dl className="space-y-4">
       {items.map((i) => (
@@ -54,7 +54,7 @@ export function PriceBars({ items }: { items: readonly { label: string; text: st
           <dt className="text-sm font-medium text-ink">{i.label}</dt>
           <dd className="flex items-center gap-3">
             <span aria-hidden className={`h-7 rounded ${tones[i.tone ?? "wine"]}`} style={{ width: `${i.scale * 70}%` }} />
-            <span className="font-display text-xl text-wine-900">{i.text}</span>
+            <span className="font-display text-xl text-heading">{i.text}</span>
           </dd>
         </div>
       ))}
@@ -90,7 +90,7 @@ export function Bubbles({ items, centre }: { items: readonly string[]; centre: s
       </p>
       <ul className="mt-6 flex flex-wrap justify-center gap-3">
         {items.map((i) => (
-          <li key={i} className="rounded-full border border-gold-deep/40 bg-sand/60 px-4 py-2.5 text-center text-sm text-wine-900">{i}</li>
+          <li key={i} className="rounded-full border border-gold-deep/40 bg-sand/60 px-4 py-2.5 text-center text-sm text-heading">{i}</li>
         ))}
       </ul>
     </div>
@@ -101,10 +101,10 @@ export function Timeline({ steps }: { steps: readonly { title: string; text: str
   return (
     <ol className="grid gap-y-8 sm:grid-cols-2 lg:grid-cols-6">
       {steps.map((s, i) => (
-        <li key={s.title} className="relative border-t-2 border-wine-800 pr-5 pt-5">
+        <li key={s.title} className="relative border-t-2 border-accent pr-5 pt-5">
           <span aria-hidden className="absolute -top-[0.45rem] left-0 h-3 w-3 rounded-full bg-wine-800" />
           <p className="font-display text-sm italic text-gold-deep">{String(i + 1).padStart(2, "0")}</p>
-          <p className="mt-1 font-display text-lg text-wine-900">{s.title}</p>
+          <p className="mt-1 font-display text-lg text-heading">{s.title}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
         </li>
       ))}
@@ -119,7 +119,7 @@ export function StackedBars({ years }: { years: readonly { year: string; initial
   return (
     <div className="rounded-xl border border-line bg-paper p-6">
       <div className="flex gap-6 text-xs uppercase tracking-[0.16em] text-muted">
-        <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-sm bg-wine-800" />Initial</span>
+        <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-sm bg-chart" />Initial</span>
         <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-sm bg-gold-deep" />Follow-on</span>
       </div>
       <div className="mt-6 grid grid-cols-5 items-end gap-3 sm:gap-6" style={{ height: 170 }}>
@@ -130,7 +130,7 @@ export function StackedBars({ years }: { years: readonly { year: string; initial
             ) : (
               <>
                 <div className="rounded-t bg-gold-deep" style={{ height: `${((y.followOn ?? 0) / max) * 100}%` }} />
-                <div className="bg-wine-800" style={{ height: `${((y.initial ?? 0) / max) * 100}%` }} />
+                <div className="bg-chart" style={{ height: `${((y.initial ?? 0) / max) * 100}%` }} />
               </>
             )}
           </div>
@@ -150,9 +150,9 @@ export function Contrast({ others, we }: { others: string; we: string }) {
         <p className="eyebrow !text-muted">Where others see</p>
         <p className="mt-3 font-display text-xl leading-snug text-muted">{others}</p>
       </div>
-      <div className="rounded-xl border-2 border-wine-800 bg-paper p-7">
+      <div className="rounded-xl border-2 border-accent bg-paper p-7">
         <p className="eyebrow">We see</p>
-        <p className="mt-3 font-display text-xl leading-snug text-wine-900">{we}</p>
+        <p className="mt-3 font-display text-xl leading-snug text-heading">{we}</p>
       </div>
     </div>
   );
@@ -160,17 +160,17 @@ export function Contrast({ others, we }: { others: string; we: string }) {
 
 export function CaseCard({ name, tag, story, facts }: { name: string; tag: string; story: string; facts: readonly (readonly [string, string])[] }) {
   return (
-    <article className="flex h-full flex-col rounded-xl border border-wine-800/25 bg-paper">
+    <article className="flex h-full flex-col rounded-xl border border-accent/25 bg-paper">
       <div className="p-6">
         <p className="eyebrow">{tag}</p>
-        <h3 className="mt-2 font-display text-2xl text-wine-900">{name}</h3>
+        <h3 className="mt-2 font-display text-2xl text-heading">{name}</h3>
         <p className="mt-3 text-sm leading-relaxed text-ink/85">{story}</p>
       </div>
       <dl className="mt-auto border-t border-line">
         {facts.map(([k, v]) => (
           <div key={k} className="flex items-baseline justify-between gap-4 border-b border-line/70 px-6 py-3 text-sm last:border-0">
             <dt className="text-muted">{k}</dt>
-            <dd className={`text-right ${v === "To be confirmed" ? "italic text-muted" : "font-medium text-wine-900"}`}>{v}</dd>
+            <dd className={`text-right ${v === "To be confirmed" ? "italic text-muted" : "font-medium text-heading"}`}>{v}</dd>
           </div>
         ))}
       </dl>
@@ -187,7 +187,7 @@ export function Quote({ text, who, pending }: { text: string; who: string; pendi
     );
   return (
     <figure className="border-l-2 border-gold-deep pl-6">
-      <blockquote className="font-display text-2xl italic leading-snug text-wine-900">“{text}”</blockquote>
+      <blockquote className="font-display text-2xl italic leading-snug text-heading">“{text}”</blockquote>
       <figcaption className="mt-4 text-sm text-muted">{who}</figcaption>
     </figure>
   );
@@ -198,7 +198,7 @@ export function TwoBrands({ brands, line, tone = "light" }: { brands: readonly {
   const dark = tone === "dark";
   const art = [
     <svg key="o" viewBox="0 0 64 64" className="h-16 w-16" aria-hidden><circle cx="32" cy="34" r="22" fill="#e08a2c" /><circle cx="32" cy="34" r="22" fill="none" stroke="#b96a17" strokeWidth="1.5" /><path d="M32 12c2-6 8-8 13-7-1 6-6 9-13 7z" fill="#5d7a3a" /><circle cx="25" cy="27" r="4" fill="#f3b566" opacity=".6" /></svg>,
-    <svg key="g" viewBox="0 0 64 64" className="h-16 w-16" aria-hidden><path d="M32 6v10" stroke="#5d7a3a" strokeWidth="2.5" strokeLinecap="round" /><path d="M32 12c4-6 11-6 15-3-3 6-9 7-15 3z" fill="#5d7a3a" />{[[22,24],[32,24],[42,24],[27,33],[37,33],[22,42],[32,42],[42,42],[27,51],[37,51],[32,59]].map(([x,y])=> <circle key={`${x}-${y}`} cx={x} cy={y} r="5.6" fill="#4e0e25" stroke="#7d2241" strokeWidth="1" />)}</svg>,
+    <svg key="g" viewBox="0 0 64 64" className="h-16 w-16" aria-hidden><path d="M32 6v10" stroke="#5d7a3a" strokeWidth="2.5" strokeLinecap="round" /><path d="M32 12c4-6 11-6 15-3-3 6-9 7-15 3z" fill="#5d7a3a" />{[[22,24],[32,24],[42,24],[27,33],[37,33],[22,42],[32,42],[42,42],[27,51],[37,51],[32,59]].map(([x,y])=> <circle key={`${x}-${y}`} cx={x} cy={y} r="5.6" fill="var(--color-grape)" stroke="var(--color-grape-edge)" strokeWidth="1" />)}</svg>,
   ];
   return (
     <div>
@@ -207,13 +207,13 @@ export function TwoBrands({ brands, line, tone = "light" }: { brands: readonly {
           <li key={b.name} className={`flex items-center gap-5 rounded-xl border p-6 ${dark ? "border-cream/15 bg-wine-950/40" : "border-line bg-paper"}`}>
             {art[i]}
             <div>
-              <p className={`font-display text-2xl ${dark ? "text-cream" : "text-wine-900"}`}>{b.name}</p>
+              <p className={`font-display text-2xl ${dark ? "text-cream" : "text-heading"}`}>{b.name}</p>
               <p className={`mt-1 text-sm leading-relaxed ${dark ? "text-cream/75" : "text-muted"}`}>{b.line}</p>
             </div>
           </li>
         ))}
       </ul>
-      <p className={`mt-6 font-display text-xl italic ${dark ? "text-gold" : "text-wine-800"}`}>{line}</p>
+      <p className={`mt-6 font-display text-xl italic ${dark ? "text-gold" : "text-accent"}`}>{line}</p>
     </div>
   );
 }
