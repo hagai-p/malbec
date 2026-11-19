@@ -42,11 +42,11 @@ export default function Home() {
               <div className="rise rise-3">
                 <p className="text-lg leading-relaxed text-cream/90 sm:text-xl">{site.positioning}</p>
                 <div className="mt-7 flex flex-wrap gap-4">
-                  <Link href="/founders" className="btn-gold">
-                    For founders
+                  <Link href="/portfolio" className="btn-gold">
+                    View the portfolio
                   </Link>
-                  <Link href="/thesis" className="btn-light">
-                    Read our thesis
+                  <Link href="/contact" className="btn-light">
+                    Get in touch
                   </Link>
                 </div>
               </div>
@@ -129,9 +129,6 @@ export default function Home() {
                 </div>
               ))}
             </dl>
-            <Link href="/thesis" className="btn-light mt-14">
-              Why Israel × Argentina
-            </Link>
           </div>
         </section>
 
@@ -201,11 +198,11 @@ export default function Home() {
               Building between Israel and Latin America? <em>Pull up a chair.</em>
             </h2>
             <div className="flex flex-wrap gap-4">
-              <Link href="/founders" className="btn-wine">
-                Tell us what you&apos;re building
-              </Link>
-              <Link href="/contact" className="btn-ghost">
+              <Link href="/contact" className="btn-wine">
                 Get in touch
+              </Link>
+              <Link href="/portfolio" className="btn-ghost">
+                View the portfolio
               </Link>
             </div>
           </div>

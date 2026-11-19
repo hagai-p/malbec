@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { PageIntro } from "@/components/page-intro";
-import { ContactForm } from "@/components/forms";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -39,15 +38,23 @@ export default function Contact() {
                 <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline">LinkedIn ↗</a>
               </dd>
             </div>
-            <div>
-              <dt className="eyebrow">Investors</dt>
-              <dd className="mt-2 leading-relaxed text-muted">
-                Existing and invited limited partners can sign in at{" "}
-                <a href={site.lpUrl} className="text-accent underline">malbec.online</a>. Access is by invitation.
-              </dd>
-            </div>
           </dl>
-          <ContactForm />
+          <div className="rounded-xl bg-wine-950 p-8 text-cream sm:p-12">
+            <p className="eyebrow !text-gold">Write to us</p>
+            <h2 className="display mt-4 text-3xl sm:text-4xl">
+              The best conversations <em className="text-gold">start with a short note.</em>
+            </h2>
+            <p className="mt-5 max-w-md leading-relaxed text-cream/80">
+              Tell us who you are and what you have in mind. We read every message ourselves and reply personally.
+            </p>
+            <a
+              href={`mailto:${site.email}?subject=${encodeURIComponent("Hello Malbec Ventures")}`}
+              className="btn-gold mt-8"
+            >
+              Email us
+            </a>
+            <p className="mt-4 text-sm text-cream/60">{site.email}</p>
+          </div>
         </section>
       </main>
     </>

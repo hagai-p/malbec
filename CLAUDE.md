@@ -15,6 +15,8 @@ One repo for everything Malbec Ventures runs. First mission: the websites.
 ## Rules
 - Next.js 16 differs from older versions: read `apps/web/node_modules/next/dist/docs/` before using an API (see `apps/web/AGENTS.md`).
 - Public site: no fund terms, no performance, no funding amounts, no offer language. Named pipeline companies are LP-only.
+- Public site has four sections only: Home, Portfolio, Team, Contact. No Thesis or Founders pages, no forms (an "Email us" button until the database exists), and no "LP Login" link until the LP site is live on malbec.online.
+- `proxy.ts` serves `/lp/*` only on malbec.online and localhost, and `/dd/*` only on localhost; every other host gets a 404.
 - LP content files (`src/content/lp`) must only be imported from `src/app/lp` or `src/app/admin`.
 - Brand: two looks, one firm. Public site = Estate (cream, wine, gold, Playfair Display). LP site and admin = Gallery (white, Malbec red, navy, Inter Tight), applied by `data-theme="gallery"` in `src/app/lp/layout.tsx`. Use role classes (`bg-page`, `text-heading`, `text-accent`, `bg-chart`), not raw colours, so both looks keep working. Component classes are defined with `@utility` in `globals.css`.
 - Anything marked `TO CONFIRM` in content is a placeholder awaiting Hagai's input; see `docs/open-items.md`.

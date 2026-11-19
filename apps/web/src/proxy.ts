@@ -1,7 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_HOSTS = new Set(["malbec.ventures", "www.malbec.ventures"]);
 const LP_HOSTS = new Set(["malbec.online", "www.malbec.online"]);
 const PUBLIC_ORIGIN = "https://www.malbec.ventures";
 
@@ -13,15 +12,20 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isLpPath = pathname === "/lp" || pathname.startsWith("/lp/");
 
-  // The public domain never serves LP or admin pages.
-  if (PUBLIC_HOSTS.has(host) && isLpPath) {
-    return NextResponse.rewrite(new URL("/_not-found", request.url), { status: 404 });
-  }
+  const isLocal = host === "localhost" || host === "127.0.0.1";
+  const notFound = () => NextResponse.rewrite(new URL("/_not-found", request.url), { status: 404 });
+
+  // LP and admin pages exist only on the LP domain (and on a developer's machine). Every other
+  // address, including the public domain and Vercel's own *.vercel.app addresses, gets a 404.
+  if (isLpPath && !LP_HOSTS.has(host) && !isLocal) return notFound();
+
+  // The founder DD questionnaire needs the database, which is not connected yet.
+  // Until it is, the links only work on a developer's machine.
+  if (pathname.startsWith("/dd/") && !isLocal) return notFound();
 
   // The LP domain serves only the LP site; anything else belongs to the public site.
   if (LP_HOSTS.has(host) && !isLpPath) {
     if (pathname === "/") return NextResponse.redirect(new URL("/lp", request.url));
-    if (pathname.startsWith("/dd/")) return NextResponse.redirect(new URL(pathname, PUBLIC_ORIGIN));
     return NextResponse.redirect(new URL(pathname + request.nextUrl.search, PUBLIC_ORIGIN));
   }
 

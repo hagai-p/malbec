@@ -17,10 +17,9 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "/thesis", label: "Thesis" },
+  { href: "/", label: "Home" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/team", label: "Team" },
-  { href: "/founders", label: "Founders" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -119,17 +118,3 @@ export const backedBy = {
     { name: "United Kingdom", code: "gb" },
   ],
 } as const;
-
-export const founderValue = [
-  { title: "A bridge, not just a cheque", body: "Deep local networks in both Israel and Argentina: customers, design partners, talent and co-investors on either side of the ocean." },
-  { title: "Hands-on from day one", body: "Real-world feedback, round structuring, the road to product-market fit, and scaling guidance from people who have done it." },
-  { title: "A curated circle", body: "Introductions to co-investors, advisors and industry experts who open doors rather than fill calendars." },
-  { title: "Go global early", body: "Strategic support for expansion and go-to-market in new geographies, built into the plan from the first conversation." },
-] as const;
-
-export const founderProcess = [
-  { step: "01", title: "Tell us what you're building", body: "A short note is enough. No deck theatre." },
-  { step: "02", title: "A conversation", body: "We meet, ideally in person, and get to know you and the problem." },
-  { step: "03", title: "Due diligence", body: "If there's a fit, we send a personal link to our DD questionnaire and dig in together." },
-  { step: "04", title: "Decision", body: "A clear answer from our investment committee, and the reasons behind it." },
-] as const;

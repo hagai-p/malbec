@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { submitContact, submitPitch, type FormState } from "@/lib/actions";
+import { submitContact, type FormState } from "@/lib/actions";
 
 const initial: FormState = { status: "idle" };
 
@@ -67,32 +67,6 @@ export function ContactForm() {
       {state.message && <p role="alert" className="text-sm text-danger">{state.message}</p>}
       <button type="submit" disabled={pending} className="btn-wine disabled:opacity-60">
         {pending ? "Sending…" : "Send message"}
-      </button>
-    </form>
-  );
-}
-
-export function PitchForm() {
-  const [state, action, pending] = useActionState(submitPitch, initial);
-  if (state.status === "ok")
-    return <Done title="Got it. Thank you." body="We read every note ourselves. If there's a fit, you'll hear from us with a time to talk." />;
-  return (
-    <form action={action} className="relative space-y-6" noValidate>
-      <Honeypot />
-      <div className="grid gap-6 sm:grid-cols-2">
-        <Field name="founder_name" label="Your name" required state={state} autoComplete="name" />
-        <Field name="founder_email" label="Email" type="email" required state={state} autoComplete="email" />
-        <Field name="company_name" label="Company" required state={state} autoComplete="organization" />
-        <Field name="company_url" label="Website" type="url" state={state} />
-        <Field name="country" label="Based in" state={state} />
-        <Field name="sector" label="Sector" state={state} />
-      </div>
-      <Field name="stage" label="Stage" state={state} hint="For example: pre-seed, seed, Series A." />
-      <Field name="short_pitch" label="What are you building?" required textarea rows={3} maxLength={280} state={state} hint="One or two sentences, 280 characters at most." />
-      <Field name="bridge" label="Where does Israel–Latin America come in?" textarea rows={4} state={state} />
-      {state.message && <p role="alert" className="text-sm text-danger">{state.message}</p>}
-      <button type="submit" disabled={pending} className="btn-wine disabled:opacity-60">
-        {pending ? "Sending…" : "Send to Malbec"}
       </button>
     </form>
   );

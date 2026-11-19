@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { nav, site } from "@/content/site";
+import { nav } from "@/content/site";
 import { Logo } from "./logo";
 import { MobileNav } from "./mobile-nav";
 
@@ -25,9 +25,6 @@ export function Header({ tone = "light" }: { tone?: "light" | "dark" }) {
               {item.label}
             </Link>
           ))}
-          <a href={site.lpUrl} className={onDark ? "btn-light !py-2" : "btn-ghost !py-2"}>
-            LP Login
-          </a>
         </nav>
         <MobileNav onDark={onDark} />
       </div>

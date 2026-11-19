@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { nav, site } from "@/content/site";
+import { nav } from "@/content/site";
 
 export function MobileNav({ onDark }: { onDark: boolean }) {
   const [open, setOpen] = useState(false);
@@ -30,9 +30,6 @@ export function MobileNav({ onDark }: { onDark: boolean }) {
                 {item.label}
               </Link>
             ))}
-            <a href={site.lpUrl} className="btn-wine mt-5 self-start">
-              LP Login
-            </a>
           </nav>
         </div>
       )}

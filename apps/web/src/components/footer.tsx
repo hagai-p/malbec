@@ -21,11 +21,6 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <a href={site.lpUrl} className="hover:text-cream">
-                LP Login
-              </a>
-            </li>
           </ul>
         </div>
         <div>
