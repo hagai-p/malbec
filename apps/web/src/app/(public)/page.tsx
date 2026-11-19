@@ -15,8 +15,8 @@ export default function Home() {
         <section className="bg-wine-950 text-cream">
           <div className="relative aspect-[1344/768] max-h-[64svh] min-h-[14rem] w-full overflow-hidden">
             <Image
-              src="/brand/hero-orange-grape.jpg"
-              alt="A field at sunset: orange trees on the left below the Tel Aviv shoreline, Malbec vines heavy with grapes on the right below the Buenos Aires skyline"
+              src="/brand/hero-orange-grape-v2.jpg"
+              alt="A field at sunset: Malbec vines heavy with grapes on the left below the Buenos Aires skyline, orange trees on the right below the Tel Aviv shoreline, and the sun setting over the bay between the two cities"
               fill
               priority
               sizes="100vw"
@@ -25,10 +25,10 @@ export default function Home() {
             <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-wine-950/75 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t sm:h-16 from-wine-950 to-transparent" />
             <p className="absolute bottom-5 left-5 hidden text-[0.65rem] uppercase tracking-[0.22em] text-cream/85 sm:left-8 sm:block lg:left-12">
-              Tel Aviv · the orange
+              Buenos Aires · the grape
             </p>
             <p className="absolute bottom-5 right-5 hidden text-[0.65rem] uppercase tracking-[0.22em] text-cream/85 sm:right-8 sm:block lg:right-12">
-              Buenos Aires · the grape
+              Tel Aviv · the orange
             </p>
           </div>
           <div className="page pb-12 pt-6 sm:pb-14 sm:pt-7">

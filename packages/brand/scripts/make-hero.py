@@ -1,17 +1,23 @@
-"""Paint oranges into the Tel Aviv (left) side of the hero photo and deepen the Malbec grapes
-on the Buenos Aires (right) side.  Usage: python3 make-hero.py   (run from packages/brand)
+"""Build the hero image: Buenos Aires on the left with Malbec grapes below it, Tel Aviv on the right
+with orange trees below it, and the bay and sunset between the two cities.
+Usage: python3 scripts/make-hero.py   (run from packages/brand)
+
+Step 1 (rearrange.py) re-composes the skyline band of the original photo.
+Step 2 (this file) deepens the grapes on the left and paints oranges into the right-hand vines.
 
 The original photo (assets/hero.png) is never modified. Adjust ORANGES below and re-run.
 Requires Pillow and numpy.
 """
 import numpy as np
 from PIL import Image, ImageFilter
+from rearrange import rearrange
 
 SRC = "assets/hero.png"
-OUT = ["assets/hero-orange-grape.jpg", "../../apps/web/public/brand/hero-orange-grape.jpg"]
+OUT = ["assets/hero-orange-grape.jpg", "../../apps/web/public/brand/hero-orange-grape-v2.jpg"]
 rng = np.random.default_rng(11)
 
-# (x, y, radius) in source pixels: clusters in front, then fruit receding up the left-hand rows.
+# (x, y, radius) as laid out on the left of the original photo; mirrored to the right-hand
+# (Tel Aviv) side in main(). Clusters in front, then fruit receding up the rows.
 ORANGES = [
     (182, 606, 23), (226, 590, 24), (206, 640, 25), (254, 630, 23), (176, 676, 23), (228, 690, 25), (276, 672, 22),
     (300, 626, 21), (204, 734, 23), (258, 730, 22), (306, 706, 20), (150, 640, 20),
@@ -30,24 +36,25 @@ def smooth_noise(shape, sigma, seed):
     return (a - a.min()) / (a.max() - a.min() + 1e-6)
 
 def main():
-    src = Image.open(SRC).convert("RGB")
+    src = rearrange(Image.open(SRC).convert("RGB"))
     W, H = src.size
+    oranges = [(W - x, y, r) for (x, y, r) in ORANGES]
     S = np.asarray(src).astype(np.float32) / 255.0
     out = S.copy()
     hsv = np.asarray(src.convert("HSV")).astype(np.float32)
     hue, sat, val = hsv[..., 0], hsv[..., 1], hsv[..., 2]
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
 
-    # ---- right side: deepen the Malbec grapes (purple-blue, foreground only)
+    # ---- left side (Buenos Aires): deepen the Malbec grapes (purple-blue, foreground only)
     purple = ((hue > 150) & (hue < 220) & (sat > 55)).astype(np.float32)
-    right = purple * (xx > 700) * (yy > 520)
+    right = purple * (xx < 644) * (yy > 520)
     right = np.asarray(Image.fromarray((right * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(2))).astype(np.float32) / 255
     g = out.mean(axis=2, keepdims=True)
     rich = np.clip(g + (out - g) * 1.6, 0, 1) * 0.88 + np.array([0.36, 0.07, 0.30]) * 0.12
     out = out * (1 - right[..., None]) + rich * right[..., None]
 
-    # ---- left side: turn the existing grape bunches into shaded foliage so no purple shows through
-    left = purple * (xx < 680) * (yy > 420)
+    # ---- right side (Tel Aviv): turn the grape bunches into shaded foliage so no purple shows through
+    left = purple * (xx > 664) * (yy > 420)
     left = np.asarray(Image.fromarray((left * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(7)).filter(ImageFilter.GaussianBlur(3))).astype(np.float32) / 255
     # blur first so the bunch shape disappears, then recolour as leaves in shade
     soft = np.asarray(Image.fromarray((np.clip(out, 0, 1) * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(7))).astype(np.float32) / 255
@@ -56,16 +63,16 @@ def main():
     foliage = np.clip(lum * np.array([0.52, 0.74, 0.26]) * (0.78 + 0.5 * mottle) + np.array([0.03, 0.05, 0.01]), 0, 1)
     out = out * (1 - left[..., None]) + foliage * left[..., None]
 
-    # ---- oranges: lit spheres, light from the low sun at upper-left
+    # ---- oranges: lit spheres; the sun now sets at the centre, up and to the left of the fruit
     Lv = np.array([-0.62, -0.50, 0.60]); Lv /= np.linalg.norm(Lv)
     peel = smooth_noise((H, W), 0.7, 3)
     occl = np.zeros((H, W), np.float32)      # soft shadows cast on leaves and on neighbouring fruit
     alpha = np.zeros((H, W), np.float32)
     col = np.zeros((H, W, 3), np.float32)
-    for (cx, cy, r) in sorted(ORANGES, key=lambda o: o[2]):   # far first, near on top
+    for (cx, cy, r) in sorted(oranges, key=lambda o: o[2]):   # far first, near on top
         d2 = (xx - (cx + r * 0.35)) ** 2 + (yy - (cy + r * 0.45)) ** 2
         occl = np.maximum(occl, np.exp(-d2 / (2 * (r * 0.95) ** 2)) * 0.55)
-    for (cx, cy, r) in sorted(ORANGES, key=lambda o: o[2]):
+    for (cx, cy, r) in sorted(oranges, key=lambda o: o[2]):
         dx, dy = (xx - cx) / r, (yy - cy) / r
         rr = dx * dx + dy * dy
         inside = rr <= 1.0
