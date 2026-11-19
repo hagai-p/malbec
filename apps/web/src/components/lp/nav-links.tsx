@@ -16,10 +16,10 @@ export function LpNavLinks({ items }: { items: readonly { href: string; label: s
             prefetch={false}
             aria-current={active ? "page" : undefined}
             className={`flex shrink-0 items-baseline gap-3 rounded-md px-3 py-2 text-sm transition-colors ${
-              active ? "bg-cream/10 text-cream" : "text-cream/65 hover:bg-cream/5 hover:text-cream"
+              active ? "bg-sand font-medium text-heading" : "text-muted hover:bg-sand/60 hover:text-heading"
             }`}
           >
-            <span className="hidden w-5 font-display text-xs italic text-gold lg:inline">{String(i + 1).padStart(2, "0")}</span>
+            <span className="hidden w-5 font-display text-xs italic text-accent lg:inline">{String(i + 1).padStart(2, "0")}</span>
             <span className="whitespace-nowrap">{item.label}</span>
           </Link>
         );

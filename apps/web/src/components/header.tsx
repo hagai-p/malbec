@@ -3,16 +3,14 @@ import { nav, site } from "@/content/site";
 import { Logo } from "./logo";
 import { MobileNav } from "./mobile-nav";
 
-export function Header({ tone = "light" }: { tone?: "light" | "dark" | "overlay-light" }) {
+export function Header({ tone = "light" }: { tone?: "light" | "dark" }) {
   const onDark = tone === "dark";
   return (
     <header
       className={
         onDark
           ? "absolute inset-x-0 top-0 z-40 text-cream"
-          : tone === "overlay-light"
-            ? "absolute inset-x-0 top-0 z-40 text-ink"
-            : "sticky top-0 z-40 border-b border-line/70 bg-page/90 text-ink backdrop-blur"
+          : "sticky top-0 z-40 border-b border-line/70 bg-page/90 text-ink backdrop-blur"
       }
     >
       <div className="page flex h-20 items-center justify-between">

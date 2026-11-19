@@ -9,16 +9,16 @@ import { LpNavLinks } from "./nav-links";
 export function LpFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-dvh lg:grid lg:grid-cols-[17rem_1fr]">
-      <aside className="border-b border-line bg-wine-950 text-cream lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:border-b-0">
+      <aside className="border-b border-line bg-page text-ink lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:border-b-0 lg:border-r">
         <div className="flex items-center justify-between px-6 py-6 lg:block">
-          <Logo href="/lp" />
-          <p className="eyebrow !text-gold lg:mt-6">Investor site</p>
+          <Logo href="/lp" className="text-heading" />
+          <p className="eyebrow lg:mt-6">Investor site</p>
         </div>
         <Suspense>
           <LpNavLinks items={lpNav} />
         </Suspense>
         <form action={signOut} className="hidden px-6 py-6 lg:block">
-          <button type="submit" className="text-xs uppercase tracking-[0.2em] text-cream/60 hover:text-cream">
+          <button type="submit" className="text-xs uppercase tracking-[0.2em] text-muted hover:text-accent">
             Sign out
           </button>
         </form>

@@ -36,12 +36,12 @@
 }
 
 /* ------------------------------------------------------------------------------------------
- * Design directions under review. "estate" is the default above.
- * Selected with NEXT_PUBLIC_THEME (see src/lib/theme.ts). Once one is chosen, fold its values
- * into @theme and delete the others.
+ * Two looks, one brand.
+ * Estate (the @theme defaults above) is the public site, www.malbec.ventures.
+ * Gallery is the LP site, www.malbec.online: set by data-theme="gallery" in src/app/lp/layout.tsx.
  * ---------------------------------------------------------------------------------------- */
 
-/* B · Gallery — white, modern, precise */
+/* Gallery — white, modern, precise */
 [data-theme="gallery"] {
   --color-wine-950: #0e1b30;
   --color-wine-900: #1f3a5f;
@@ -70,41 +70,13 @@
   --radius-2xl: 6px;
 }
 
-/* C · Night harvest — dark, bold, deck-like */
-[data-theme="night"] {
-  --color-wine-950: #0b0f24;
-  --color-wine-900: #232c58;
-  --color-wine-800: #7d2f45;
-  --color-wine-700: #93384f;
-  --color-wine-600: #a8425c;
-  --color-cream: #f2f1ee;
-  --color-gold: #e0a458;
-  --color-gold-deep: #e0a458;
-  --color-page: #141a33;
-  --color-paper: #1e2647;
-  --color-sand: #283260;
-  --color-line: #343f6e;
-  --color-ink: #f2f1ee;
-  --color-muted: #aab1cc;
-  --color-heading: #ffffff;
-  --color-accent: #ee9db6;
-  --color-danger: #ff9a9a;
-  --color-grape: #b0507a;
-  --color-chart: #e07a9c;
-  --color-grape-edge: #d98aa8;
-  --font-display: var(--font-sora), Sora, Inter, system-ui, sans-serif;
-  --radius-xl: 14px;
-}
-
-/* Sans-serif directions: weight carries the emphasis that italics carry in Estate. */
-[data-theme="gallery"] .font-display,
-[data-theme="night"] .font-display {
+/* Gallery is sans-serif: weight and colour carry the emphasis that italics carry in Estate. */
+[data-theme="gallery"] .font-display {
   font-weight: 650;
   letter-spacing: -0.012em;
   font-style: normal;
 }
-[data-theme="gallery"] .display,
-[data-theme="night"] .display {
+[data-theme="gallery"] .display {
   font-weight: 700;
   letter-spacing: -0.022em;
   line-height: 1.06;
@@ -113,34 +85,12 @@
   font-style: normal;
   color: var(--color-accent);
 }
-[data-theme="night"] .display em {
-  font-style: normal;
-  color: var(--color-gold);
-}
-[data-theme="gallery"] .eyebrow,
-[data-theme="night"] .eyebrow {
-  font-weight: 600;
-}
 [data-theme="gallery"] .eyebrow {
+  font-weight: 600;
   color: var(--color-accent);
 }
 [data-theme="gallery"] [class*="btn-"] {
   border-radius: 4px;
-}
-[data-theme="night"] [class*="btn-"] {
-  border-radius: 10px;
-  font-weight: 600;
-}
-/* Logos are supplied on white: on a dark page they sit on a white chip instead of blending. */
-[data-theme="night"] .mix-blend-multiply {
-  mix-blend-mode: normal;
-  background: #fff;
-  border-radius: 6px;
-  padding: 6px;
-}
-[data-theme="night"] ::selection {
-  background: var(--color-gold);
-  color: var(--color-wine-950);
 }
 
 html {

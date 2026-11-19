@@ -24,6 +24,7 @@
 
 Sources for content: "ARG VC Ecosystem as an Export Story" (ASHRA, 18.8.26) and "The Argentine Tech Opportunity" (Ambassador's residence, Aug 2026), both in Gmail. Structure borrowed from the E44, iAngels and Breeze decks; none of their figures or wording is used.
 
-## Design direction (Nov 2026)
+## Design (decided Nov 2026)
 
-Three directions are built and switchable: A Estate (default), B Gallery (white), C Night harvest (dark). Comparison page: `docs/themes/index.html`. Preview one locally with `NEXT_PUBLIC_THEME=gallery pnpm dev` (or `night`). Awaiting Hagai's choice; then fold the chosen values into `@theme` in `apps/web/src/app/globals.css` and `packages/brand/tokens.css`, and remove `src/lib/theme.ts` and the other two blocks.
+- Public site: Estate (cream, wine, gold, Playfair Display). LP site and admin: Gallery (white, Malbec red, navy, Inter Tight). Set in `apps/web/src/app/globals.css`; the LP look is applied in `src/app/lp/layout.tsx`.
+- Hero image: oranges painted into the Tel Aviv side and the grapes deepened on the Buenos Aires side by `packages/brand/scripts/make-hero.py`. The original is `packages/brand/assets/hero.png`. This is an edited image, not a new photograph; if a true photograph is wanted, generate one with: "Golden-hour panorama, orange grove heavy with fruit in the left foreground below the Tel Aviv shoreline and skyline, Malbec vineyard with dark purple grape clusters in the right foreground below the Buenos Aires skyline with the Obelisk and colourful La Boca houses, a dirt path between them leading to the horizon, dramatic purple and orange sunset sky, photorealistic, 16:9" and replace `apps/web/public/brand/hero-orange-grape.jpg`.

@@ -5,69 +5,54 @@ import { backedBy, bridgeStats, pillars, site } from "@/content/site";
 import { coInvestors, collaborators, companies } from "@/content/portfolio";
 import { partners } from "@/content/team";
 import { Avatar } from "@/components/avatar";
-import { theme } from "@/lib/theme";
 
 export default function Home() {
   return (
     <>
-      <Header tone={theme === "gallery" ? "overlay-light" : "dark"} />
+      <Header tone="dark" />
       <main id="main">
-        {/* Hero */}
-        {theme === "gallery" ? (
-          <section className="page grid gap-10 pb-16 pt-32 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16 lg:pb-24 lg:pt-40">
-            <div>
-              <p className="eyebrow rise">Tel Aviv — Buenos Aires</p>
-              <h1 className="display rise rise-2 mt-6 text-[2.6rem] text-heading sm:text-7xl">
-                {site.headline[0]} <em>{site.headline[1]}</em>
-              </h1>
-              <p className="rise rise-3 mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">{site.positioning}</p>
-              <div className="rise rise-3 mt-10 flex flex-wrap gap-4">
-                <Link href="/founders" className="btn-wine">For founders</Link>
-                <Link href="/thesis" className="btn-ghost">Read our thesis</Link>
-              </div>
-            </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-              <Image
-                src="/brand/hero.jpg"
-                alt="A Malbec vineyard at sunset, with the Tel Aviv shoreline on one side and the Buenos Aires skyline on the other"
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </section>
-        ) : (
-          <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-wine-950 text-cream">
+        {/* Hero: the picture is shown whole (it tells the two-brands story), with the headline beneath it */}
+        <section className="bg-wine-950 text-cream">
+          <div className="relative aspect-[1344/768] max-h-[64svh] min-h-[14rem] w-full overflow-hidden">
             <Image
-              src="/brand/hero.jpg"
-              alt="A Malbec vineyard at sunset, with the Tel Aviv shoreline on one side and the Buenos Aires skyline on the other"
+              src="/brand/hero-orange-grape.jpg"
+              alt="A field at sunset: orange trees on the left below the Tel Aviv shoreline, Malbec vines heavy with grapes on the right below the Buenos Aires skyline"
               fill
               priority
               sizes="100vw"
-              className="-z-10 object-cover"
+              className="object-cover object-[50%_78%]"
             />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-wine-950 via-wine-950/35 to-wine-950/10" />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-wine-950/55 to-transparent" />
-            <div className="page pb-16 pt-40 sm:pb-24">
-              <p className="eyebrow rise !text-gold">Tel Aviv — Buenos Aires</p>
-              <h1 className="display rise rise-2 mt-6 max-w-4xl text-[2.6rem] sm:text-7xl">
+            <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-wine-950/75 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t sm:h-16 from-wine-950 to-transparent" />
+            <p className="absolute bottom-5 left-5 hidden text-[0.65rem] uppercase tracking-[0.22em] text-cream/85 sm:left-8 sm:block lg:left-12">
+              Tel Aviv · the orange
+            </p>
+            <p className="absolute bottom-5 right-5 hidden text-[0.65rem] uppercase tracking-[0.22em] text-cream/85 sm:right-8 sm:block lg:right-12">
+              Buenos Aires · the grape
+            </p>
+          </div>
+          <div className="page pb-12 pt-6 sm:pb-14 sm:pt-7">
+            <p className="eyebrow rise !text-gold">Tel Aviv — Buenos Aires</p>
+            <div className="mt-5 grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-end lg:gap-16">
+              <h1 className="display rise rise-2 text-[2.5rem] sm:text-6xl">
                 {site.headline[0]}
                 <br />
                 <em className="text-gold">{site.headline[1]}</em>
               </h1>
-              <p className="rise rise-3 mt-8 max-w-xl text-lg leading-relaxed text-cream/90 sm:text-xl">{site.positioning}</p>
-              <div className="rise rise-3 mt-10 flex flex-wrap gap-4">
-                <Link href="/founders" className="btn-gold">
-                  For founders
-                </Link>
-                <Link href="/thesis" className="btn-light">
-                  Read our thesis
-                </Link>
+              <div className="rise rise-3">
+                <p className="text-lg leading-relaxed text-cream/90 sm:text-xl">{site.positioning}</p>
+                <div className="mt-7 flex flex-wrap gap-4">
+                  <Link href="/founders" className="btn-gold">
+                    For founders
+                  </Link>
+                  <Link href="/thesis" className="btn-light">
+                    Read our thesis
+                  </Link>
+                </div>
               </div>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* Intro */}
         <section className="page grid gap-10 py-20 sm:py-28 lg:grid-cols-[1fr_1.3fr] lg:gap-20">

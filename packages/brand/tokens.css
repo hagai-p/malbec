@@ -1,4 +1,7 @@
-/* Malbec Ventures brand tokens. Keep in sync with apps/web/src/app/globals.css (@theme). */
+/* Malbec Ventures brand tokens. Keep in sync with apps/web/src/app/globals.css.
+   Estate = public site (www.malbec.ventures). Gallery = LP site (www.malbec.online). */
+
+/* Estate */
 :root {
   --wine-950: #1a070f;
   --wine-900: #2a0b17;
@@ -15,4 +18,20 @@
   --muted: #6c5a61;
   --font-display: "Playfair Display", Georgia, serif;
   --font-sans: Inter, system-ui, sans-serif;
+}
+
+/* Gallery */
+[data-theme="gallery"] {
+  --wine-950: #0e1b30; /* deep navy: dark panels */
+  --wine-900: #1f3a5f; /* navy: stat bands */
+  --wine-800: #7b1e3b; /* Malbec red: buttons, accents */
+  --gold: #c3d4ec; /* pale blue: numbers on navy */
+  --gold-deep: #1f3a5f; /* navy as second accent */
+  --cream: #ffffff;
+  --paper: #ffffff;
+  --sand: #f3f4f7;
+  --line: #e2e5eb;
+  --ink: #111114;
+  --muted: #595f6e;
+  --font-display: "Inter Tight", Inter, system-ui, sans-serif;
 }
