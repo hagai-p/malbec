@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Avatar } from "@/components/avatar";
 import { Block, LpPage } from "@/components/lp/shell";
 import { founderStory, structure } from "@/content/lp/fund";
-import { advisors, network, partners, type Person } from "@/content/team";
+import { team, type Person } from "@/content/team";
 
 export const metadata: Metadata = { title: "Team & governance" };
 
@@ -14,7 +14,7 @@ function Compact({ people }: { people: Person[] }) {
           <Avatar person={p} />
           <div>
             <h3 className="font-display text-xl text-heading">{p.name}</h3>
-            <p className="text-sm text-gold-deep">{p.role}{p.affiliation && ` · ${p.affiliation}`}</p>
+            <p className="text-sm text-gold-deep">{p.role}</p>
             <p className="mt-3 text-sm leading-relaxed text-muted">{p.bio}</p>
           </div>
         </li>
@@ -34,26 +34,32 @@ export default function LpTeam() {
         <p className="mt-3 text-xs text-muted">Draft, based on the “VC as an Export?” talk. To be approved by Hagai.</p>
       </Block>
 
-      <Block title="Partners">
-        <ul className="grid gap-5 lg:grid-cols-3">
-          {partners.map((p) => (
-            <li key={p.name} className="rounded-xl bg-wine-950 p-6 text-cream">
-              <div className="flex items-center gap-4">
-                <Avatar person={p} />
-                <div>
-                  <h3 className="font-display text-xl">{p.name}</h3>
-                  <p className="text-sm text-gold">{p.role}</p>
-                </div>
-              </div>
-              <ul className="mt-5 space-y-2 text-sm leading-relaxed text-cream/80">
-                {(p.credentials ?? [p.bio]).map((c) => (
-                  <li key={c} className="flex gap-2"><span aria-hidden className="text-gold">·</span>{c}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </Block>
+      {team.map((g) =>
+        g.size === "large" ? (
+          <Block key={g.key} title={g.title}>
+            <ul className={`grid gap-5 ${g.people.length % 3 === 0 ? "lg:grid-cols-3" : "sm:grid-cols-2"}`}>
+              {g.people.map((p) => (
+                <li key={p.name} className="rounded-xl bg-wine-950 p-6 text-cream">
+                  <div className="flex items-center gap-4">
+                    <Avatar person={p} />
+                    <div>
+                      <h3 className="font-display text-xl">{p.name}</h3>
+                      <p className="text-sm text-gold">{p.role}</p>
+                    </div>
+                  </div>
+                  <ul className="mt-5 space-y-2 text-sm leading-relaxed text-cream/80">
+                    {(p.credentials ?? [p.bio]).map((c) => (
+                      <li key={c} className="flex gap-2"><span aria-hidden className="text-gold">·</span>{c}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </Block>
+        ) : (
+          <Block key={g.key} title={g.title}><Compact people={g.people} /></Block>
+        ),
+      )}
 
       <Block title="Investment committee">
         <p className="rounded-xl border border-dashed border-gold-deep/50 p-6 italic text-muted">
@@ -62,8 +68,6 @@ export default function LpTeam() {
         </p>
       </Block>
 
-      <Block title="Advisory board"><Compact people={advisors} /></Block>
-      <Block title="Network & mentors"><Compact people={network} /></Block>
 
       <Block title="Legal structure" note="Capital flows down from the limited partners into the fund and on to portfolio companies in Israel and Latin America.">
         <ol className="space-y-2">

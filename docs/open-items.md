@@ -1,7 +1,10 @@
 # Open items (awaiting Hagai)
 
 - Terms per vehicle: fee, carry, minimum commitment, closing dates for Malbec POC and Malbec 1.
-- Team roster changes (current list in `apps/web/src/content/team.ts`), team photos.
+- Team (roster updated from the November 2026 one-pager; edit in `apps/web/src/content/team.ts`):
+  - Photos needed: Hilik Weinstein, Nitzan Weinstein (showing initials). Better photos wanted: Ido Almany, Dan Block (only 200px available in the one-pager).
+  - LinkedIn links missing: Alejandro Stivelman, Matias Dajcz, Hilik Weinstein, Ido Almany, Nitzan Weinstein, Dan Block.
+- The November 2026 one-pager differs from both sites on fund facts (first cheque up to $300K; Fund 1 warehousing $1M raised closing at $2M; Fund 2 first close $5M by 31 Dec 2027; market figures; 200+ startups reviewed; 0 write-offs, 7 of 7 at or above entry; new co-investors). Not applied: confirm which numbers are current.
 - Investment committee members.
 - Data-room document list.
 - Legal wording: privacy, terms, disclaimer, LP confidentiality terms (drafts in `content/legal.ts`).

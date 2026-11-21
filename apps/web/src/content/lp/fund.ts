@@ -2,6 +2,8 @@
  * LP-ONLY CONTENT. Import only from src/app/lp.
  * TBC marks figures awaiting confirmation from Hagai (see docs/open-items.md).
  */
+import { peopleIn } from "@/content/team";
+
 export const TBC = "To be confirmed";
 
 export const lpNav = [
@@ -157,11 +159,10 @@ export const trackRecord = [
   { value: TBC, label: "capital deployed to date" },
 ];
 
-export const partnerRecords = [
-  { name: "Hagai Platin", record: "Dozens of venture deals as counsel, $450M in total value, from pre-seed to Series E and M&A." },
-  { name: "Dr. Franck Atlan", record: "Advised Israeli venture funds on health-tech investments worth $650M in total." },
-  { name: "Alejandro Stivelman", record: "Three exits as an operator: Prospera, Zooz and PayU." },
-];
+/** Derived from the roster in content/team.ts (the `record` line on each partner). */
+export const partnerRecords = peopleIn("partners")
+  .filter((p) => p.record)
+  .map((p) => ({ name: p.name, record: p.record as string }));
 
 export const lpValue = [
   "Access to cross-border deal flow in two underserved, high-potential markets",

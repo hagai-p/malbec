@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { backedBy, bridgeStats, pillars, site } from "@/content/site";
 import { coInvestors, collaborators, companies } from "@/content/portfolio";
-import { partners } from "@/content/team";
+import { homeTeam } from "@/content/team";
 import { Avatar } from "@/components/avatar";
 
 export default function Home() {
@@ -137,14 +137,14 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="eyebrow">Team</p>
-              <h2 className="display mt-4 max-w-xl text-3xl text-heading sm:text-5xl">Operators, investors, and a surgeon.</h2>
+              <h2 className="display mt-4 max-w-xl text-3xl text-heading sm:text-5xl">Operators, investors, a banker and a surgeon.</h2>
             </div>
             <Link href="/team" className="btn-ghost">
               Meet the team
             </Link>
           </div>
-          <ul className="mt-12 grid gap-8 md:grid-cols-3">
-            {partners.map((p) => (
+          <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {homeTeam.map((p) => (
               <li key={p.name} className="flex items-center gap-5 border-t border-line pt-6">
                 <Avatar person={p} />
                 <div>

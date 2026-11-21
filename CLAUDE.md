@@ -19,6 +19,7 @@ One repo for everything Malbec Ventures runs. First mission: the websites.
 - `proxy.ts` serves `/lp/*` only on malbec.online and localhost, and `/dd/*` only on localhost; every other host gets a 404.
 - LP content files (`src/content/lp`) must only be imported from `src/app/lp` or `src/app/admin`.
 - Brand: two looks, one firm. Public site = Estate (cream, wine, gold, Playfair Display). LP site and admin = Gallery (white, Malbec red, navy, Inter Tight), applied by `data-theme="gallery"` in `src/app/lp/layout.tsx`. Use role classes (`bg-page`, `text-heading`, `text-accent`, `bg-chart`), not raw colours, so both looks keep working. Component classes are defined with `@utility` in `globals.css`.
+- Team: `apps/web/src/content/team.ts` is the only place to edit. Add, remove, reorder or regroup people in `people`; add a group in `teamGroups`; photos go in `apps/web/public/team/`. The public Team page, home preview and LP Team page all loop over it, so no page code changes are needed.
 - Anything marked `TO CONFIRM` in content is a placeholder awaiting Hagai's input; see `docs/open-items.md`.
 
 ## Commands (in `apps/web`)
