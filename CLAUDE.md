@@ -11,6 +11,7 @@ One repo for everything Malbec Ventures runs. First mission: the websites.
 - `packages/brand` — brand tokens and logo assets, for reuse by decks and marketing.
 - `supabase/migrations` — database schema and row-level security.
 - `docs` — open items and the go-live runbook.
+- `shortcuts` — Windows desktop links (`.url`) to the sites, Vercel, GitHub and GoDaddy DNS.
 
 ## Rules
 - Next.js 16 differs from older versions: read `apps/web/node_modules/next/dist/docs/` before using an API (see `apps/web/AGENTS.md`).
